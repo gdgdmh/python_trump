@@ -5,7 +5,7 @@ from python_trump import trump
 
 def main():
     print('main')
-    trump_test = trump.Trump(trump.Trump.SPADE, 2)
+    trump_test = trump.Trump(trump.Trump.SPADE, 1)
     trump_test.print_string()
 
 
