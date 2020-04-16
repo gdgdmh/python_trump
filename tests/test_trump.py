@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 """トランプテストクラス"""
-# import pytest
 from python_trump import trump
 
 
@@ -126,11 +125,16 @@ def test_get_suit_string_003():
 
 
 def test_get_suit_string_004():
+    """get_suit_stringでハートが取得できるかチェック"""
+    assert trump.Trump(trump.Trump.HEART, 12).get_suit_string() == "HEART"
+
+
+def test_get_suit_string_005():
     """get_suit_stringでダイヤモンドが取得できるかチェック"""
     assert trump.Trump(trump.Trump.DIAMOND, 4).get_suit_string() == "DIAMOND"
 
 
-def test_get_suit_string_005():
+def test_get_suit_string_006():
     """get_suit_stringでクラブが取得できるかチェック"""
     assert trump.Trump(trump.Trump.CLUB, 5).get_suit_string() == "CLUB"
 
