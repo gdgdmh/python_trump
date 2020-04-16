@@ -14,7 +14,7 @@ class Trump:
     MAX_JOKER = 2
     SPADE_STRING = "SPADE"
     HEART_STRING = "HEART"
-    DIA_STRING = "DIA"
+    DIA_STRING = "DIAMOND"
     CLUB_STRING = "CLUB"
     SPADE_SHORT_STRING = "S"
     HEART_SHORT_STRING = "H"
@@ -34,6 +34,14 @@ class Trump:
     def print_string(self):
         """トランプを文字列で表示する"""
         print(self.get_suit_short_string() + str(self.number))
+
+    def get_suit(self):
+        """トランプのスートを取得する"""
+        return self.suit
+
+    def get_number(self):
+        """トランプの番号を取得する"""
+        return self.number
 
     def get_suit_string(self):
         """スートの文字列を取得する"""
