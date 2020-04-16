@@ -7,18 +7,20 @@ class Trump:
     JOKER = 0x00
     SPADE = 0x02
     HEART = 0x04
-    DIA = 0x08
+    DIAMOND = 0x08
     CLUB = 0x010
     MIN_NUMBER = 1
     MAX_NUMBER = 13
     MAX_JOKER = 2
+    JOKER_STRING = "JOKER"
     SPADE_STRING = "SPADE"
     HEART_STRING = "HEART"
-    DIA_STRING = "DIAMOND"
+    DIAMOND_STRING = "DIAMOND"
     CLUB_STRING = "CLUB"
+    JOKER_SHORT_STRING = "J"
     SPADE_SHORT_STRING = "S"
     HEART_SHORT_STRING = "H"
-    DIA_SHORT_STRING = "D"
+    DIAMOND_SHORT_STRING = "D"
     CLUB_SHORT_STRING = "C"
 
     def __init__(self, suit, number):
@@ -45,22 +47,26 @@ class Trump:
 
     def get_suit_string(self):
         """スートの文字列を取得する"""
-        if self.suit == Trump.SPADE:
+        if self.suit == Trump.JOKER:
+            return Trump.JOKER_STRING
+        elif self.suit == Trump.SPADE:
             return Trump.SPADE_STRING
         elif self.suit == Trump.HEART:
             return Trump.HEART_STRING
-        elif self.suit == Trump.DIA:
-            return Trump.DIA_STRING
+        elif self.suit == Trump.DIAMOND:
+            return Trump.DIAMOND_STRING
         elif self.suit == Trump.CLUB:
             return Trump.CLUB_STRING
 
     def get_suit_short_string(self):
         """スートの短縮文字列を取得する"""
-        if self.suit == Trump.SPADE:
+        if self.suit == Trump.JOKER:
+            return Trump.JOKER_SHORT_STRING
+        elif self.suit == Trump.SPADE:
             return Trump.SPADE_SHORT_STRING
         elif self.suit == Trump.HEART:
             return Trump.HEART_SHORT_STRING
-        elif self.suit == Trump.DIA:
-            return Trump.DIA_SHORT_STRING
+        elif self.suit == Trump.DIAMOND:
+            return Trump.DIAMOND_SHORT_STRING
         elif self.suit == Trump.CLUB:
             return Trump.CLUB_SHORT_STRING
