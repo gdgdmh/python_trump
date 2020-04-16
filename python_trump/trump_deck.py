@@ -22,7 +22,7 @@ class TrumpDeck:
 
     def index(self, index):
         """デッキの要素を返す"""
-        return self.deck.index(index)
+        return self.deck[index]
 
     def size(self):
         """デッキのサイズを返す"""
