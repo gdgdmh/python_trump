@@ -45,6 +45,26 @@ class Trump:
         """トランプの番号を取得する"""
         return self.number
 
+    def is_joker(self):
+        """トランプがジョーカーか"""
+        return self.suit == Trump.JOKER
+
+    def is_spade(self):
+        """トランプのスートがスペードか"""
+        return self.suit == Trump.SPADE
+
+    def is_heart(self):
+        """トランプのスートがハートか"""
+        return self.suit == Trump.HEART
+
+    def is_diamond(self):
+        """トランプのスートがダイアモンドか"""
+        return self.suit == Trump.DIAMOND
+
+    def is_club(self):
+        """トランプのスートがクラブか"""
+        return self.suit == Trump.CLUB
+
     def get_suit_string(self):
         """スートの文字列を取得する"""
         if self.suit == Trump.JOKER:

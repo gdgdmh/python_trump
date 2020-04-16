@@ -45,6 +45,50 @@ def test_get_number_club():
     assert trump.Trump(trump.Trump.CLUB, 12).get_number() == 12
 
 
+def test_is_joker_001():
+    assert trump.Trump(trump.Trump.JOKER, 1).is_joker()
+
+
+def test_is_joker_002():
+    assert trump.Trump(trump.Trump.JOKER, 2).is_joker()
+
+
+def test_is_joker_003():
+    assert trump.Trump(trump.Trump.SPADE, 1).is_joker() is not True
+
+
+def test_is_space_001():
+    assert trump.Trump(trump.Trump.SPADE, 5).is_spade()
+
+
+def test_is_space_002():
+    assert trump.Trump(trump.Trump.HEART, 5).is_spade() is not True
+
+
+def test_is_heart_001():
+    assert trump.Trump(trump.Trump.HEART, 8).is_heart()
+
+
+def test_is_heart_002():
+    assert trump.Trump(trump.Trump.DIAMOND, 8).is_heart() is not True
+
+
+def test_is_diamond_001():
+    assert trump.Trump(trump.Trump.DIAMOND, 10).is_diamond()
+
+
+def test_is_diamond_002():
+    assert trump.Trump(trump.Trump.CLUB, 10).is_diamond() is not True
+
+
+def test_is_club_001():
+    assert trump.Trump(trump.Trump.CLUB, 12).is_club()
+
+
+def test_is_club_002():
+    assert trump.Trump(trump.Trump.SPADE, 12).is_club() is not True
+
+
 def test_get_suit_string_joker():
     assert trump.Trump(trump.Trump.JOKER, 1).get_suit_string() == "JOKER"
 
