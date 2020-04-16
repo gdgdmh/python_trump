@@ -24,6 +24,7 @@ class Trump:
     CLUB_SHORT_STRING = "C"
 
     def __init__(self, suit, number):
+        """コンストラクタ"""
         self.suit = suit
         self.number = number
         if suit != Trump.JOKER:
