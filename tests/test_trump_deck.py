@@ -202,6 +202,34 @@ def test_put_top_003():
     assert card_heart.is_heart()
 
 
+def test_draw_001():
+    """デッキから引くチェック"""
+    deck = trump_deck.TrumpDeck()
+    deck.put_top(trump.Trump(trump.Trump.HEART, 11))
+    card = deck.draw()
+    assert str(type(card)) == trump.Trump.TYPE_STRING
+    assert card.get_number() == 11
+    assert card.get_suit() == trump.Trump.HEART
+    assert card.is_heart()
+
+
+def test_draw_002():
+    """デッキから引くチェック(2枚)"""
+    deck = trump_deck.TrumpDeck()
+    deck.put_top(trump.Trump(trump.Trump.HEART, 9))
+    deck.put_top(trump.Trump(trump.Trump.JOKER, 2))
+    card_joker = deck.draw()
+    assert str(type(card_joker)) == trump.Trump.TYPE_STRING
+    assert card_joker.get_number() == 2
+    assert card_joker.get_suit() == trump.Trump.JOKER
+    assert card_joker.is_joker()
+    card_heart = deck.draw()
+    assert str(type(card_heart)) == trump.Trump.TYPE_STRING
+    assert card_heart.get_number() == 9
+    assert card_heart.get_suit() == trump.Trump.HEART
+    assert card_heart.is_heart()
+
+
 def test_index_001():
     """デッキの参照をチェック"""
     deck = trump_deck.TrumpDeck()
