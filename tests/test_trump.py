@@ -162,3 +162,9 @@ def test_get_suit_short_string_004():
 def test_get_suit_short_string_005():
     """get_suit_short_stringでクラブが取得できるかチェック"""
     assert trump.Trump(trump.Trump.CLUB, 10).get_suit_short_string() == "C"
+
+
+def test_define_type_string_001():
+    """クラス定義のTYPE_STRINGのチェック"""
+    card = trump.Trump(trump.Trump.JOKER, 1)
+    assert trump.Trump.TYPE_STRING == str(type(card))

@@ -22,6 +22,7 @@ class Trump:
     HEART_SHORT_STRING = "H"
     DIAMOND_SHORT_STRING = "D"
     CLUB_SHORT_STRING = "C"
+    TYPE_STRING = '<class \'python_trump.trump.Trump\'>'
 
     def __init__(self, suit, number):
         """コンストラクタ"""

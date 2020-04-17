@@ -29,6 +29,16 @@ class TrumpDeck:
             self.deck.append(trump.Trump(trump.Trump.DIAMOND, n + 1))
             self.deck.append(trump.Trump(trump.Trump.CLUB, n + 1))
 
+    def put_top(self, card):
+        """カードをデッキの一番上に置く"""
+        if str(type(card)) != trump.Trump.TYPE_STRING:
+            raise ValueError("card not trump!")
+        self.deck.append(card)
+
+    def draw(self):
+        """カードを引く"""
+        return self.deck.pop()
+
     def index(self, index):
         """デッキの要素を返す"""
         return self.deck[index]
@@ -47,8 +57,4 @@ class TrumpDeck:
 
     def shuffle(self):
         """デッキをシャッフルする"""
-        pass
-
-    def draw(self):
-        """カードを引く"""
         pass

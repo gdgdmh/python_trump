@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """トランプデッキテストクラス"""
-
 from python_trump import trump_deck
+from python_trump import trump
 
 
 def test_set_full_deck_001():
@@ -149,3 +149,54 @@ def set_no_joker_deck_001():
     assert len(heart_list) == 0
     assert len(diamond_list) == 0
     assert len(club_list) == 0
+
+
+def test_put_top_001():
+    """トランプをデッキをトップに置いているかチェック"""
+    deck = trump_deck.TrumpDeck()
+    deck.put_top(trump.Trump(trump.Trump.JOKER, 1))
+    card = deck.index(0)
+    assert str(type(card)) == trump.Trump.TYPE_STRING
+    assert card.get_number() == 1
+    assert card.get_suit() == trump.Trump.JOKER
+    assert card.is_joker()
+
+
+def test_put_top_002():
+    """トランプをデッキをトップに置いているかチェック(2枚)"""
+    deck = trump_deck.TrumpDeck()
+    deck.put_top(trump.Trump(trump.Trump.JOKER, 1))
+    deck.put_top(trump.Trump(trump.Trump.CLUB, 10))
+    card_joker = deck.index(0)
+    assert str(type(card_joker)) == trump.Trump.TYPE_STRING
+    assert card_joker.get_number() == 1
+    assert card_joker.get_suit() == trump.Trump.JOKER
+    assert card_joker.is_joker()
+    card_club = deck.index(1)
+    assert str(type(card_club)) == trump.Trump.TYPE_STRING
+    assert card_club.get_number() == 10
+    assert card_club.get_suit() == trump.Trump.CLUB
+    assert card_club.is_club()
+
+
+def test_put_top_003():
+    """トランプをデッキをトップに置いているかチェック(3枚)"""
+    deck = trump_deck.TrumpDeck()
+    deck.put_top(trump.Trump(trump.Trump.SPADE, 13))
+    deck.put_top(trump.Trump(trump.Trump.DIAMOND, 5))
+    deck.put_top(trump.Trump(trump.Trump.HEART, 8))
+    card_spade = deck.index(0)
+    assert str(type(card_spade)) == trump.Trump.TYPE_STRING
+    assert card_spade.get_number() == 13
+    assert card_spade.get_suit() == trump.Trump.SPADE
+    assert card_spade.is_spade()
+    card_diamond = deck.index(1)
+    assert str(type(card_diamond)) == trump.Trump.TYPE_STRING
+    assert card_diamond.get_number() == 5
+    assert card_diamond.get_suit() == trump.Trump.DIAMOND
+    assert card_diamond.is_diamond()
+    card_heart = deck.index(2)
+    assert str(type(card_heart)) == trump.Trump.TYPE_STRING
+    assert card_heart.get_number() == 8
+    assert card_heart.get_suit() == trump.Trump.HEART
+    assert card_heart.is_heart()
