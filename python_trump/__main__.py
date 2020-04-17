@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """エントリーポイント"""
-from python_trump import trump
-from python_trump import trump_deck
+# from python_trump import trump
+# from python_trump import trump_deck
 
 
 def main():
@@ -15,8 +15,6 @@ def main():
     list = range(1, 15)
     for num in list:
         print(str(num))
-    # print (list)
-
 
 if __name__ == '__main__':
     main()
