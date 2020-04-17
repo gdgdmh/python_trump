@@ -200,3 +200,14 @@ def test_put_top_003():
     assert card_heart.get_number() == 8
     assert card_heart.get_suit() == trump.Trump.HEART
     assert card_heart.is_heart()
+
+
+def test_index_001():
+    """デッキの参照をチェック"""
+    deck = trump_deck.TrumpDeck()
+    deck.put_top(trump.Trump(trump.Trump.DIAMOND, 3))
+    card = deck.index(0)
+    assert str(type(card)) == trump.Trump.TYPE_STRING
+    assert card.get_number() == 3
+    assert card.get_suit() == trump.Trump.DIAMOND
+    assert card.is_diamond()
