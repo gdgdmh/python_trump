@@ -239,3 +239,23 @@ def test_index_001():
     assert card.get_number() == 3
     assert card.get_suit() == trump.Trump.DIAMOND
     assert card.is_diamond()
+
+
+def test_size_001():
+    """デッキのサイズをチェック(1枚)"""
+    deck = trump_deck.TrumpDeck()
+    deck.put_top(trump.Trump(trump.Trump.SPADE, 6))
+    assert deck.size() == 1
+
+
+def test_size_002():
+    """デッキのサイズをチェック(0枚)"""
+    deck = trump_deck.TrumpDeck()
+    assert deck.size() == 0
+
+
+def test_size_003():
+    """デッキのサイズをチェック(2枚)"""
+    deck = trump_deck.TrumpDeck()
+    deck.set_no_joker_deck()
+    assert deck.size() == 52
