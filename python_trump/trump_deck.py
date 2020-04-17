@@ -20,6 +20,23 @@ class TrumpDeck:
             self.deck.append(trump.Trump(trump.Trump.DIAMOND, n + 1))
             self.deck.append(trump.Trump(trump.Trump.CLUB, n + 1))
 
+    def set_one_joker_deck(self):
+        """デッキに53枚(ジョーカー1枚)のカードを設定する"""
+        self.deck.append(trump.Trump(trump.Trump.JOKER, 1))
+        for n in range(13):
+            self.deck.append(trump.Trump(trump.Trump.SPADE, n + 1))
+            self.deck.append(trump.Trump(trump.Trump.HEART, n + 1))
+            self.deck.append(trump.Trump(trump.Trump.DIAMOND, n + 1))
+            self.deck.append(trump.Trump(trump.Trump.CLUB, n + 1))
+
+    def set_no_joker_deck(self):
+        """デッキに52枚のカードを設定する"""
+        for n in range(13):
+            self.deck.append(trump.Trump(trump.Trump.SPADE, n + 1))
+            self.deck.append(trump.Trump(trump.Trump.HEART, n + 1))
+            self.deck.append(trump.Trump(trump.Trump.DIAMOND, n + 1))
+            self.deck.append(trump.Trump(trump.Trump.CLUB, n + 1))
+
     def index(self, index):
         """デッキの要素を返す"""
         return self.deck[index]
