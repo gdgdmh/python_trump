@@ -25,14 +25,19 @@ def test_set_full_deck_002():
         card = deck.index(i)
         if card.is_joker():
             joker_count += 1
+            assert (card.get_number() >= 1 and card.get_number() <= 2)
         elif card.is_spade():
             spade_count += 1
+            assert (card.get_number() >= 1 and card.get_number() <= 13)
         elif card.is_heart():
             heart_count += 1
+            assert (card.get_number() >= 1 and card.get_number() <= 13)
         elif card.is_diamond():
             diamond_count += 1
+            assert (card.get_number() >= 1 and card.get_number() <= 13)
         elif card.is_club():
             club_count += 1
+            assert (card.get_number() >= 1 and card.get_number() <= 13)
     assert joker_count == 2
     assert spade_count == 13
     assert heart_count == 13
