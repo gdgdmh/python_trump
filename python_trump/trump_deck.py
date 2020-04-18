@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """トランプデッキクラス"""
+import random
 from python_trump import trump
 
 
@@ -55,6 +56,17 @@ class TrumpDeck:
             card.print_string()
             index += 1
 
-    def shuffle(self):
+    def shuffle(self, num=3):
         """デッキをシャッフルする"""
-        pass
+        if num <= 0:
+            raise ValueError("num > 0")
+        for _ in range(num):
+            self._shuffle()
+
+    def _shuffle(self):
+        """デッキをシャッフルする(Fisher-Yates shuffle)"""
+        size = len(self.deck)
+        for i in range(size, 0, -1):
+            i1 = i - 1
+            i2 = random.randint(0, i - 1)
+            self.deck[i1], self.deck[i2] = self.deck[i2], self.deck[i1]

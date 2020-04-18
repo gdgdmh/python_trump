@@ -3,6 +3,34 @@
 from python_trump import trump
 
 
+def test___eq__001():
+    """等価演算子==のチェック"""
+    card1 = trump.Trump(trump.Trump.JOKER, 1)
+    card2 = trump.Trump(trump.Trump.JOKER, 1)
+    assert card1 == card2
+
+
+def test___eq__002():
+    """等価演算子==のチェック"""
+    card1 = trump.Trump(trump.Trump.SPADE, 4)
+    card2 = trump.Trump(trump.Trump.SPADE, 4)
+    assert card1 == card2
+
+
+def test___ne__001():
+    """等価演算子!=のチェック"""
+    card1 = trump.Trump(trump.Trump.JOKER, 1)
+    card2 = trump.Trump(trump.Trump.JOKER, 2)
+    assert card1 != card2
+
+
+def test___ne__002():
+    """等価演算子!=のチェック"""
+    card1 = trump.Trump(trump.Trump.DIAMOND, 1)
+    card2 = trump.Trump(trump.Trump.CLUB, 1)
+    assert card1 != card2
+
+
 def test_get_suit_001():
     """get_suitでジョーカーが判定できるかチェック"""
     assert trump.Trump(trump.Trump.JOKER, 1).get_suit() == trump.Trump.JOKER

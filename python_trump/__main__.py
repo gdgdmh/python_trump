@@ -17,6 +17,15 @@ def main():
     deck.print()
     # list_test = []
     # list_test.pop()
+
+    deck = trump_deck.TrumpDeck()
+    deck.set_no_joker_deck()
+    deck.print()
+    deck.shuffle()
+    deck.shuffle()
+    deck.shuffle()
+    deck.print()
+
     print('main end')
 
 

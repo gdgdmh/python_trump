@@ -259,3 +259,19 @@ def test_size_003():
     deck = trump_deck.TrumpDeck()
     deck.set_no_joker_deck()
     assert deck.size() == 52
+
+
+def test_shuffle_001():
+    """デッキのシャッフルをチェック"""
+    deck = trump_deck.TrumpDeck()
+    deck.set_one_joker_deck()
+    deck_default = trump_deck.TrumpDeck()
+    deck_default.set_one_joker_deck()
+    deck.shuffle()
+    size = deck.size()
+    same_count = 0
+    for i in range(size):
+        if deck.index(i) == deck_default.index(i):
+            same_count += 1
+    # 乱数の程度によるが少なくとも一致が半分以下ならOK
+    assert same_count <= (size / 2)

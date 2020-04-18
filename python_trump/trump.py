@@ -35,6 +35,18 @@ class Trump:
             # ジョーカーは1か2
             assert number >= Trump.MIN_NUMBER and number <= Trump.MAX_JOKER
 
+    def __eq__(self, other):
+        """比較演算子=="""
+        if not isinstance(other, Trump):
+            return NotImplemented
+        return (self.suit, self.number) == (other.suit, other.number)
+
+    def __ne__(self, other):
+        """比較演算子!="""
+        if not isinstance(other, Trump):
+            return NotImplemented
+        return (self.suit, self.number) != (other.suit, other.number)
+
     def print_string(self):
         """トランプを文字列で表示する"""
         print(self.get_suit_short_string() + str(self.number))
