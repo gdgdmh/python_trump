@@ -45,3 +45,40 @@ def test_remove_002():
     assert hand.size() == 1
     hand.remove(0)
     assert hand.size() == 0
+
+
+def test_sort_001():
+    """dummy"""
+    pass
+
+
+def test_index_001():
+    """手札からカードの情報を取得する"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.JOKER, 2))
+    t = hand.index(0)
+    assert t.get_suit() == trump.Trump.JOKER
+    assert t.get_number() == 2
+
+
+def test_index_002():
+    """手札からカードの情報を取得する(2枚)"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.CLUB, 11))
+    hand.add(trump.Trump(trump.Trump.SPADE, 3))
+    t = hand.index(0)
+    assert t.get_suit() == trump.Trump.CLUB
+    assert t.get_number() == 11
+    t2 = hand.index(1)
+    assert t2.get_suit() == trump.Trump.SPADE
+    assert t2.get_number() == 3
+
+
+def test_size_001():
+    """dummy"""
+    pass
+
+
+def test_is_empty_001():
+    """dummy"""
+    pass

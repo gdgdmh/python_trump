@@ -35,4 +35,3 @@ class TrumpHand:
     def is_empty(self):
         """手札が空か"""
         return len(self.hand) == 0
-
