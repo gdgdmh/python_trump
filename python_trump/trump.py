@@ -52,6 +52,18 @@ class Trump:
             return NotImplemented
         return (self.suit, self.number) != (other.suit, other.number)
 
+    def __lt__(self, other):
+        """比較演算子<"""
+        if not isinstance(other, Trump):
+            return NotImplemented
+        return self.get_sort_number() < other.get_sort_number()
+
+    def __gt__(self, other):
+        """比較演算子>"""
+        if not isinstance(other, Trump):
+            return NotImplemented
+        return self.get_sort_number() > other.get_sort_number()
+
     def print_string(self):
         """トランプを文字列で表示する"""
         print(self.get_suit_short_string() + str(self.number))
