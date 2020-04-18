@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """トランプ手札クラス"""
+from python_trump import trump
 
 
 class TrumpHand:
@@ -7,24 +8,31 @@ class TrumpHand:
 
     def __init__(self):
         """コンストラクタ"""
-        pass
+        self.hand = []
 
-    def add(self, trump):
+    def add(self, card):
         """トランプを手札に加える"""
-        pass
+        if str(type(card)) != trump.Trump.TYPE_STRING:
+            raise ValueError("card not trump!")
+        self.hand.append(card)
 
     def remove(self, index):
         """手札からトランプを除く"""
+        self.hand.remove(self.hand[index])
+
+    def sort(self):
+        """手札をソートする"""
         pass
 
-    def index(self):
+    def index(self, index):
         """手札からカードを取得する"""
-        pass
+        return self.hand[index]
 
     def size(self):
         """手札の枚数"""
-        pass
+        return len(self.hand)
 
     def is_empty(self):
         """手札が空か"""
-        pass
+        return len(self.hand) == 0
+
