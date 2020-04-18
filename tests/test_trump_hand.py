@@ -90,5 +90,14 @@ def test_size_002():
 
 
 def test_is_empty_001():
-    """dummy"""
-    pass
+    """手札が空かチェック"""
+    hand = trump_hand.TrumpHand()
+    assert hand.is_empty()
+
+
+def test_is_empty_002():
+    """手札が空かチェック(追加して削除)"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.HEART, 2))
+    hand.remove(0)
+    assert hand.is_empty()
