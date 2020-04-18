@@ -12,6 +12,11 @@ class Trump:
     MIN_NUMBER = 1
     MAX_NUMBER = 13
     MAX_JOKER = 2
+    SORT_SPADE = 20
+    SORT_HEART = 40
+    SORT_DIAMOND = 60
+    SORT_CLUB = 80
+    SORT_JOKER = 100
     JOKER_STRING = "JOKER"
     SPADE_STRING = "SPADE"
     HEART_STRING = "HEART"
@@ -104,3 +109,18 @@ class Trump:
             return Trump.DIAMOND_SHORT_STRING
         elif self.suit == Trump.CLUB:
             return Trump.CLUB_SHORT_STRING
+
+    def get_sort_number(self):
+        """ソート用の番号を取得する"""
+        n = 0
+        if self.suit == Trump.SPADE:
+            n = Trump.SORT_SPADE
+        elif self.suit == Trump.HEART:
+            n = Trump.SORT_HEART
+        elif self.suit == Trump.DIAMOND:
+            n = Trump.SORT_DIAMOND
+        elif self.suit == Trump.CLUB:
+            n = Trump.SORT_CLUB
+        elif self.suit == Trump.JOKER:
+            n = Trump.SORT_JOKER
+        return n + self.number

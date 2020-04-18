@@ -13,6 +13,7 @@ def main():
     # type test
     card = trump.Trump(trump.Trump.JOKER, 1)
     print(type(card))
+    print(card.get_sort_number())
     deck = trump_deck.TrumpDeck()
     deck.print()
     # list_test = []
@@ -20,11 +21,12 @@ def main():
 
     deck = trump_deck.TrumpDeck()
     deck.set_no_joker_deck()
-    deck.print()
-    deck.shuffle()
-    deck.shuffle()
-    deck.shuffle()
-    deck.print()
+    # deck.print()
+    # deck.shuffle()
+    # deck.shuffle()
+    # deck.shuffle()
+    # deck.print()
+
 
     print('main end')
 
