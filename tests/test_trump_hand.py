@@ -75,8 +75,18 @@ def test_index_002():
 
 
 def test_size_001():
-    """dummy"""
-    pass
+    """手札の枚数を取得する"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.HEART, 6))
+    assert hand.size() == 1
+
+
+def test_size_002():
+    """手札の枚数を取得する"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.DIAMOND, 13))
+    hand.add(trump.Trump(trump.Trump.HEART, 6))
+    assert hand.size() == 2
 
 
 def test_is_empty_001():

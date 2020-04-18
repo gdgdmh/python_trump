@@ -29,7 +29,7 @@ class TrumpHand:
         return self.hand[index]
 
     def size(self):
-        """手札の枚数"""
+        """手札の枚数を取得する"""
         return len(self.hand)
 
     def is_empty(self):
