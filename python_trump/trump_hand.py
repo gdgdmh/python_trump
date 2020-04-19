@@ -22,7 +22,7 @@ class TrumpHand:
 
     def sort(self):
         """手札をソートする"""
-        self.hand.sort(key=lambda x: x.get_sort_number())
+        self.hand.sort(key=trump.Trump.get_sort_number)
 
     def index(self, index):
         """手札からカードを取得する"""

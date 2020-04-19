@@ -48,8 +48,87 @@ def test_remove_002():
 
 
 def test_sort_001():
-    """dummy"""
-    pass
+    """3枚のカードをソートする"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.CLUB, 5))
+    hand.add(trump.Trump(trump.Trump.JOKER, 1))
+    hand.add(trump.Trump(trump.Trump.DIAMOND, 4))
+    hand.sort()
+    t1 = hand.index(0)
+    assert t1.get_suit() == trump.Trump.DIAMOND
+    assert t1.get_number() == 4
+    t2 = hand.index(1)
+    assert t2.get_suit() == trump.Trump.CLUB
+    assert t2.get_number() == 5
+    t3 = hand.index(2)
+    assert t3.get_suit() == trump.Trump.JOKER
+    assert t3.get_number() == 1
+
+
+def test_sort_002():
+    """4枚のカードをソートする(同一スート)"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.HEART, 5))
+    hand.add(trump.Trump(trump.Trump.HEART, 1))
+    hand.add(trump.Trump(trump.Trump.HEART, 13))
+    hand.add(trump.Trump(trump.Trump.HEART, 4))
+    hand.sort()
+    t1 = hand.index(0)
+    assert t1.get_suit() == trump.Trump.HEART
+    assert t1.get_number() == 1
+    t2 = hand.index(1)
+    assert t2.get_suit() == trump.Trump.HEART
+    assert t2.get_number() == 4
+    t3 = hand.index(2)
+    assert t3.get_suit() == trump.Trump.HEART
+    assert t3.get_number() == 5
+    t4 = hand.index(3)
+    assert t4.get_suit() == trump.Trump.HEART
+    assert t4.get_number() == 13
+
+
+def test_sort_003():
+    """5枚のカードをソートする(各スート)"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.HEART, 1))
+    hand.add(trump.Trump(trump.Trump.CLUB, 1))
+    hand.add(trump.Trump(trump.Trump.SPADE, 1))
+    hand.add(trump.Trump(trump.Trump.DIAMOND, 1))
+    hand.add(trump.Trump(trump.Trump.JOKER, 1))
+    hand.sort()
+    t1 = hand.index(0)
+    assert t1.get_suit() == trump.Trump.SPADE
+    assert t1.get_number() == 1
+    t2 = hand.index(1)
+    assert t2.get_suit() == trump.Trump.HEART
+    assert t2.get_number() == 1
+    t3 = hand.index(2)
+    assert t3.get_suit() == trump.Trump.DIAMOND
+    assert t3.get_number() == 1
+    t4 = hand.index(3)
+    assert t4.get_suit() == trump.Trump.CLUB
+    assert t4.get_number() == 1
+    t5 = hand.index(4)
+    assert t5.get_suit() == trump.Trump.JOKER
+    assert t5.get_number() == 1
+
+
+def test_sort_004():
+    """3枚のカードをソートする(JOKER2枚)"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.JOKER, 2))
+    hand.add(trump.Trump(trump.Trump.CLUB, 13))
+    hand.add(trump.Trump(trump.Trump.JOKER, 1))
+    hand.sort()
+    t1 = hand.index(0)
+    assert t1.get_suit() == trump.Trump.CLUB
+    assert t1.get_number() == 13
+    t2 = hand.index(1)
+    assert t2.get_suit() == trump.Trump.JOKER
+    assert t2.get_number() == 1
+    t3 = hand.index(2)
+    assert t3.get_suit() == trump.Trump.JOKER
+    assert t3.get_number() == 2
 
 
 def test_index_001():
