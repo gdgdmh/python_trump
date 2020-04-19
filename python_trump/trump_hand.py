@@ -22,7 +22,7 @@ class TrumpHand:
 
     def sort(self):
         """手札をソートする"""
-        pass
+        self.hand.sort(key=lambda x: x.get_sort_number())
 
     def index(self, index):
         """手札からカードを取得する"""
@@ -35,3 +35,11 @@ class TrumpHand:
     def is_empty(self):
         """手札が空か"""
         return len(self.hand) == 0
+
+    def print(self):
+        """手札の表示"""
+        index = 0
+        for card in self.hand:
+            print("[" + str(index) + "]", end="")
+            card.print_string()
+            index += 1
