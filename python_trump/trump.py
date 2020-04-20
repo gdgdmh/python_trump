@@ -12,11 +12,7 @@ class Trump:
     MIN_NUMBER = 1
     MAX_NUMBER = 13
     MAX_JOKER = 2
-    SORT_SPADE = 20
-    SORT_HEART = 40
-    SORT_DIAMOND = 60
-    SORT_CLUB = 80
-    SORT_JOKER = 100
+    SUIT_SORT = {SPADE: 0, HEART: 20, DIAMOND: 40, CLUB: 60, JOKER: 80}
     SUIT_STRING = \
         {
             JOKER: "JOKER",
@@ -94,15 +90,4 @@ class Trump:
 
     def get_sort_number(self):
         """ソート用の番号を取得する"""
-        n = 0
-        if self.suit == Trump.SPADE:
-            n = Trump.SORT_SPADE
-        elif self.suit == Trump.HEART:
-            n = Trump.SORT_HEART
-        elif self.suit == Trump.DIAMOND:
-            n = Trump.SORT_DIAMOND
-        elif self.suit == Trump.CLUB:
-            n = Trump.SORT_CLUB
-        elif self.suit == Trump.JOKER:
-            n = Trump.SORT_JOKER
-        return n + self.number
+        return Trump.SUIT_SORT[self.suit] + self.number

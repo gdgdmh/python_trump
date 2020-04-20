@@ -201,28 +201,33 @@ def test_define_type_string_001():
 def test_get_sort_number_001():
     """ソート用番号を取得(ジョーカー)のチェック"""
     card = trump.Trump(trump.Trump.JOKER, 1)
-    assert card.get_sort_number() == (trump.Trump.SORT_JOKER + 1)
+    sort_number = card.get_sort_number()
+    assert sort_number == (trump.Trump.SUIT_SORT[trump.Trump.JOKER] + 1)
 
 
 def test_get_sort_number_002():
     """ソート用番号を取得(スペード)のチェック"""
     card = trump.Trump(trump.Trump.SPADE, 5)
-    assert card.get_sort_number() == (trump.Trump.SORT_SPADE + 5)
+    sort_number = card.get_sort_number()
+    assert sort_number == (trump.Trump.SUIT_SORT[trump.Trump.SPADE] + 5)
 
 
 def test_get_sort_number_003():
     """ソート用番号を取得(ハート)のチェック"""
     card = trump.Trump(trump.Trump.HEART, 10)
-    assert card.get_sort_number() == (trump.Trump.SORT_HEART + 10)
+    sort_number = card.get_sort_number()
+    assert sort_number == (trump.Trump.SUIT_SORT[trump.Trump.HEART] + 10)
 
 
 def test_get_sort_number_004():
     """ソート用番号を取得(ダイヤモンド)のチェック"""
     card = trump.Trump(trump.Trump.DIAMOND, 13)
-    assert card.get_sort_number() == (trump.Trump.SORT_DIAMOND + 13)
+    sort_number = card.get_sort_number()
+    assert sort_number == (trump.Trump.SUIT_SORT[trump.Trump.DIAMOND] + 13)
 
 
 def test_get_sort_number_005():
     """ソート用番号を取得(クラブ)のチェック"""
     card = trump.Trump(trump.Trump.CLUB, 1)
-    assert card.get_sort_number() == (trump.Trump.SORT_CLUB + 1)
+    sort_number = card.get_sort_number()
+    assert sort_number == (trump.Trump.SUIT_SORT[trump.Trump.CLUB] + 1)
