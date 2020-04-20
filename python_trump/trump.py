@@ -17,16 +17,16 @@ class Trump:
     SORT_DIAMOND = 60
     SORT_CLUB = 80
     SORT_JOKER = 100
-    JOKER_STRING = "JOKER"
-    SPADE_STRING = "SPADE"
-    HEART_STRING = "HEART"
-    DIAMOND_STRING = "DIAMOND"
-    CLUB_STRING = "CLUB"
-    JOKER_SHORT_STRING = "J"
-    SPADE_SHORT_STRING = "S"
-    HEART_SHORT_STRING = "H"
-    DIAMOND_SHORT_STRING = "D"
-    CLUB_SHORT_STRING = "C"
+    SUIT_STRING = \
+        {
+            JOKER: "JOKER",
+            SPADE: "SPADE",
+            HEART: "HEART",
+            DIAMOND: "DIAMOND",
+            CLUB: "CLUB"
+        }
+    SUIT_SHORT_STRING = \
+        {JOKER: "J", SPADE: "S", HEART: "H", DIAMOND: "D", CLUB: "C"}
     TYPE_STRING = '<class \'python_trump.trump.Trump\'>'
 
     def __init__(self, suit, number):
@@ -86,29 +86,11 @@ class Trump:
 
     def get_suit_string(self):
         """スートの文字列を取得する"""
-        if self.suit == Trump.JOKER:
-            return Trump.JOKER_STRING
-        elif self.suit == Trump.SPADE:
-            return Trump.SPADE_STRING
-        elif self.suit == Trump.HEART:
-            return Trump.HEART_STRING
-        elif self.suit == Trump.DIAMOND:
-            return Trump.DIAMOND_STRING
-        elif self.suit == Trump.CLUB:
-            return Trump.CLUB_STRING
+        return Trump.SUIT_STRING[self.suit]
 
     def get_suit_short_string(self):
         """スートの短縮文字列を取得する"""
-        if self.suit == Trump.JOKER:
-            return Trump.JOKER_SHORT_STRING
-        elif self.suit == Trump.SPADE:
-            return Trump.SPADE_SHORT_STRING
-        elif self.suit == Trump.HEART:
-            return Trump.HEART_SHORT_STRING
-        elif self.suit == Trump.DIAMOND:
-            return Trump.DIAMOND_SHORT_STRING
-        elif self.suit == Trump.CLUB:
-            return Trump.CLUB_SHORT_STRING
+        return Trump.SUIT_SHORT_STRING[self.suit]
 
     def get_sort_number(self):
         """ソート用の番号を取得する"""
