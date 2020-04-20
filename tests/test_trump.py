@@ -17,15 +17,36 @@ def test___eq__002():
     assert card1 == card2
 
 
+def test___eq__003():
+    """等価演算子==のチェック"""
+    card1 = trump.Trump(trump.Trump.HEART, 7)
+    card2 = trump.Trump(trump.Trump.HEART, 7)
+    assert card1 == card2
+
+
+def test___eq__004():
+    """等価演算子==のチェック"""
+    card1 = trump.Trump(trump.Trump.DIAMOND, 12)
+    card2 = trump.Trump(trump.Trump.DIAMOND, 12)
+    assert card1 == card2
+
+
+def test___eq__005():
+    """等価演算子==のチェック"""
+    card1 = trump.Trump(trump.Trump.CLUB, 10)
+    card2 = trump.Trump(trump.Trump.CLUB, 10)
+    assert card1 == card2
+
+
 def test___ne__001():
-    """等価演算子!=のチェック"""
+    """等価演算子!=のチェック(number違い)"""
     card1 = trump.Trump(trump.Trump.JOKER, 1)
     card2 = trump.Trump(trump.Trump.JOKER, 2)
     assert card1 != card2
 
 
 def test___ne__002():
-    """等価演算子!=のチェック"""
+    """等価演算子!=のチェック(スート違い)"""
     card1 = trump.Trump(trump.Trump.DIAMOND, 1)
     card2 = trump.Trump(trump.Trump.CLUB, 1)
     assert card1 != card2
