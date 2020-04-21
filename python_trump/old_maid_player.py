@@ -21,3 +21,7 @@ class OldMaidPlayer:
     def get_pair(self):
         """ペアのカードを取得する"""
         pass
+
+    def get_hand_size(self):
+        """手札の枚数を取得する"""
+        return self.hand.size()
