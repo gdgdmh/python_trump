@@ -47,6 +47,42 @@ def test_remove_002():
     assert hand.size() == 0
 
 
+def test_remove_card_001():
+    """指定したカードを削除チェック(カードを生成)"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.JOKER, 1))
+    hand.remove_trump(trump.Trump(trump.Trump.JOKER, 1))
+    assert hand.size() == 0
+
+
+def test_remove_card_002():
+    """指定したカードを削除チェック(index指定)"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.SPADE, 4))
+    hand.remove_trump(hand.index(0))
+    assert hand.size() == 0
+
+
+def test_remove_card_003():
+    """指定したカードを削除チェック"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.SPADE, 4))
+    hand.add(trump.Trump(trump.Trump.HEART, 4))
+    hand.add(trump.Trump(trump.Trump.DIAMOND, 4))
+    hand.add(trump.Trump(trump.Trump.CLUB, 4))
+    hand.remove_trump(trump.Trump(trump.Trump.HEART, 4))
+    assert hand.size() == 3
+    t = hand.index(0)
+    assert t.get_suit() == trump.Trump.SPADE
+    assert t.get_number() == 4
+    t2 = hand.index(1)
+    assert t2.get_suit() == trump.Trump.DIAMOND
+    assert t2.get_number() == 4
+    t3 = hand.index(2)
+    assert t3.get_suit() == trump.Trump.CLUB
+    assert t3.get_number() == 4
+
+
 def test_sort_001():
     """3枚のカードをソートする"""
     hand = trump_hand.TrumpHand()

@@ -17,8 +17,12 @@ class TrumpHand:
         self.hand.append(card)
 
     def remove(self, index):
-        """手札からトランプを除く"""
+        """手札からトランプを除く(index指定)"""
         self.hand.remove(self.hand[index])
+
+    def remove_trump(self, card):
+        """手札からトランプを除く"""
+        self.hand.remove(card)
 
     def sort(self):
         """手札をソートする"""
