@@ -18,11 +18,14 @@ class TrumpHand:
 
     def remove(self, index):
         """手札からトランプを除く(index指定)"""
-        self.hand.remove(self.hand[index])
+        card = self.hand[index]
+        self.hand.remove(card)
+        return card
 
     def remove_trump(self, card):
         """手札からトランプを除く"""
         self.hand.remove(card)
+        return card
 
     def sort(self):
         """手札をソートする"""

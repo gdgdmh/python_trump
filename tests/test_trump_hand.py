@@ -32,7 +32,9 @@ def test_remove_001():
     """手札からトランプを削除チェック(1枚)"""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.CLUB, 13))
-    hand.remove(0)
+    t = hand.remove(0)
+    assert t.get_suit() == trump.Trump.CLUB
+    assert t.get_number() == 13
     assert hand.size() == 0
 
 
@@ -41,9 +43,13 @@ def test_remove_002():
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.SPADE, 5))
     hand.add(trump.Trump(trump.Trump.JOKER, 1))
-    hand.remove(0)
+    t = hand.remove(0)
+    assert t.get_suit() == trump.Trump.SPADE
+    assert t.get_number() == 5
     assert hand.size() == 1
-    hand.remove(0)
+    t2 = hand.remove(0)
+    assert t2.get_suit() == trump.Trump.JOKER
+    assert t2.get_number() == 1
     assert hand.size() == 0
 
 
@@ -51,7 +57,9 @@ def test_remove_card_001():
     """指定したカードを削除チェック(カードを生成)"""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.JOKER, 1))
-    hand.remove_trump(trump.Trump(trump.Trump.JOKER, 1))
+    t = hand.remove_trump(trump.Trump(trump.Trump.JOKER, 1))
+    assert t.get_suit() == trump.Trump.JOKER
+    assert t.get_number() == 1
     assert hand.size() == 0
 
 
@@ -59,7 +67,9 @@ def test_remove_card_002():
     """指定したカードを削除チェック(index指定)"""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.SPADE, 4))
-    hand.remove_trump(hand.index(0))
+    t = hand.remove_trump(hand.index(0))
+    assert t.get_suit() == trump.Trump.SPADE
+    assert t.get_number() == 4
     assert hand.size() == 0
 
 
@@ -70,7 +80,9 @@ def test_remove_card_003():
     hand.add(trump.Trump(trump.Trump.HEART, 4))
     hand.add(trump.Trump(trump.Trump.DIAMOND, 4))
     hand.add(trump.Trump(trump.Trump.CLUB, 4))
-    hand.remove_trump(trump.Trump(trump.Trump.HEART, 4))
+    rt = hand.remove_trump(trump.Trump(trump.Trump.HEART, 4))
+    assert rt.get_suit() == trump.Trump.HEART
+    assert rt.get_number() == 4
     assert hand.size() == 3
     t = hand.index(0)
     assert t.get_suit() == trump.Trump.SPADE
