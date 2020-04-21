@@ -13,3 +13,11 @@ class OldMaidPlayer:
     def add_hand(self, card):
         """カードを手札に加える"""
         self.hand.add(card)
+
+    def play_hand(self, index):
+        """カードを手札から出す"""
+        pass
+
+    def get_pair(self):
+        """ペアのカードを取得する"""
+        pass
