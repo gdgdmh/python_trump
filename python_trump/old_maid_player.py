@@ -15,8 +15,12 @@ class OldMaidPlayer:
         self.hand.add(card)
 
     def play_hand(self, index):
-        """カードを手札から出す"""
-        pass
+        """カードを手札から出す(index指定)"""
+        self.hand.remove(index)
+
+    def play_trump(self, card):
+        """カードを手札からだす(カード指定)"""
+        self.hand.remove_trump(card)
 
     def get_pair(self):
         """ペアのカードを取得する"""

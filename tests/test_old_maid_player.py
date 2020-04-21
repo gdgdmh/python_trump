@@ -13,12 +13,19 @@ def test_add_hand_001():
 
 
 def test_add_hand_002():
-    """dummy"""
-    pass
+    """手札にカードを追加チェック"""
+    player = old_maid_player.OldMaidPlayer()
+    assert player.get_hand_size() == 0
+    player.add_hand(trump.Trump(trump.Trump.HEART, 12))
+    assert player.get_hand_size() == 1
+    player.add_hand(trump.Trump(trump.Trump.JOKER, 2))
+    assert player.get_hand_size() == 2
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 6))
+    assert player.get_hand_size() == 3
 
 
 def test_play_hand_001():
-    """dummy"""
+    """手札からカードを出す"""
     pass
 
 
