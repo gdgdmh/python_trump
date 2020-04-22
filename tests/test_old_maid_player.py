@@ -26,7 +26,25 @@ def test_add_hand_002():
 
 def test_play_hand_001():
     """手札からカードを出す"""
-    pass
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.HEART, 2))
+    assert player.get_hand_size() == 1
+    t = player.play_hand(0)
+    assert player.get_hand_size() == 0
+    assert t.get_suit() == trump.Trump.HEART
+    assert t.get_number() == 2
+
+
+def test_play_hand_002():
+    """手札からカードを出す(2枚)"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 6))
+    assert player.get_hand_size() == 2
+    t = player.play_hand(0)
+    assert player.get_hand_size() == 1
+    assert t.get_suit() == trump.Trump.DIAMOND
+    assert t.get_number() == 2
 
 
 def test_get_pair_001():
