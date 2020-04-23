@@ -43,6 +43,10 @@ class TrumpHand:
         """手札が空か"""
         return len(self.hand) == 0
 
+    def copy_list(self):
+        """リストのコピー"""
+        return self.hand.copy()
+
     def print(self):
         """手札の表示"""
         index = 0

@@ -228,3 +228,35 @@ def test_is_empty_002():
     hand.add(trump.Trump(trump.Trump.HEART, 2))
     hand.remove(0)
     assert hand.is_empty()
+
+
+def test_copy_list_001():
+    """手札のリストをコピーする"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.CLUB, 3))
+    hand.add(trump.Trump(trump.Trump.SPADE, 10))
+    l = hand.copy_list()
+    t1 = l[0]
+    assert t1.get_suit() == trump.Trump.CLUB
+    assert t1.get_number() == 3
+    t2 = l[1]
+    assert t2.get_suit() == trump.Trump.SPADE
+    assert t2.get_number() == 10
+
+
+def test_copy_list_002():
+    """手札のリストをコピーする"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.DIAMOND, 1))
+    hand.add(trump.Trump(trump.Trump.HEART, 12))
+    hand.add(trump.Trump(trump.Trump.JOKER, 2))
+    cards = hand.copy_list()
+    t1 = cards[0]
+    assert t1.get_suit() == trump.Trump.DIAMOND
+    assert t1.get_number() == 1
+    t2 = cards[1]
+    assert t2.get_suit() == trump.Trump.HEART
+    assert t2.get_number() == 12
+    t3 = cards[2]
+    assert t3.get_suit() == trump.Trump.JOKER
+    assert t3.get_number() == 2
