@@ -3,6 +3,7 @@
 from python_trump import trump
 from python_trump import trump_deck
 from python_trump import trump_hand
+from python_trump import old_maid_player
 
 
 def main():
@@ -27,6 +28,12 @@ def main():
     hand.print()
     hand.sort()
     hand.print()
+    # player
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 1))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 2))
+    pair_list = player.get_pair()
+    len(pair_list) == 2
 
 
 if __name__ == '__main__':

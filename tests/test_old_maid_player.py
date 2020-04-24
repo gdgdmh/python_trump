@@ -48,8 +48,113 @@ def test_play_hand_002():
 
 
 def test_get_pair_001():
-    """dummy"""
-    pass
+    """ペアの取得"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 2))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 2))
+    pair_list = player.get_pair()
+    pair1 = pair_list[0].get()
+    # 順不同でS2かH2が設定されている([0]と[1]のスートが一致してないこと)
+    assert pair1[0].get_suit() == trump.Trump.SPADE or trump.Trump.HEART
+    assert pair1[0].get_number() == 2
+    assert pair1[1].get_suit() == trump.Trump.SPADE or trump.Trump.HEART
+    assert pair1[1].get_number() == 2
+    assert pair1[0].get_suit() != pair1[1].get_suit()
+
+
+def test_get_pair_002():
+    """ペアの取得(ペアなし)"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 1))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 2))
+    pair_list = player.get_pair()
+    # None or []
+    assert not pair_list
+
+
+def test_get_pair_003():
+    """ペアの取得(2ペアで同じ数字)"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 13))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 13))
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 13))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 13))
+    pair_list = player.get_pair()
+    pair1 = pair_list[0].get()
+    assert pair1[0].get_suit() == trump.Trump.DIAMOND or trump.Trump.HEART
+    assert pair1[0].get_number() == 13
+    assert pair1[1].get_suit() == trump.Trump.DIAMOND or trump.Trump.HEART
+    assert pair1[1].get_number() == 13
+    assert pair1[0].get_suit() != pair1[1].get_suit()
+    pair2 = pair_list[1].get()
+    assert pair2[0].get_suit() == trump.Trump.SPADE or trump.Trump.CLUB
+    assert pair2[0].get_number() == 13
+    assert pair2[1].get_suit() == trump.Trump.SPADE or trump.Trump.CLUB
+    assert pair2[1].get_number() == 13
+    assert pair2[0].get_suit() != pair1[1].get_suit()
+
+
+def test_get_pair_004():
+    """ペアの取得(JOKER入りでペアにならない)"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.JOKER, 1))
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 3))
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 4))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 1))
+    pair_list = player.get_pair()
+    # None or []
+    assert not pair_list
+
+
+def test_get_pair_005():
+    """ペアの取得(奇数手札)"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 3))
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 2))
+    pair_list = player.get_pair()
+    pair1 = pair_list[0].get()
+    assert pair1[0].get_suit() == trump.Trump.DIAMOND or trump.Trump.SPADE
+    assert pair1[0].get_number() == 2
+    assert pair1[1].get_suit() == trump.Trump.DIAMOND or trump.Trump.SPADE
+    assert pair1[1].get_number() == 2
+    assert pair1[0].get_suit() != pair1[1].get_suit()
+
+
+def test_get_pair_006():
+    """ペアの取得(2ペアで違う数字)"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 5))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 10))
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 10))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 5))
+    pair_list = player.get_pair()
+    pair1 = pair_list[0].get()
+    assert pair1[0].get_suit() == trump.Trump.DIAMOND or trump.Trump.CLUB
+    assert pair1[0].get_number() == 5
+    assert pair1[1].get_suit() == trump.Trump.DIAMOND or trump.Trump.CLUB
+    assert pair1[1].get_number() == 5
+    assert pair1[0].get_suit() != pair1[1].get_suit()
+    pair2 = pair_list[1].get()
+    assert pair2[0].get_suit() == trump.Trump.HEART or trump.Trump.SPADE
+    assert pair2[0].get_number() == 10
+    assert pair2[1].get_suit() == trump.Trump.HEART or trump.Trump.SPADE
+    assert pair2[1].get_number() == 10
+    assert pair2[0].get_suit() != pair1[1].get_suit()
+
+
+def test_get_pair_007():
+    """ペアの取得(全部のトランプ)"""
+    player = old_maid_player.OldMaidPlayer()
+    for n in range(13):
+        player.add_hand(trump.Trump(trump.Trump.SPADE, n + 1))
+        player.add_hand(trump.Trump(trump.Trump.HEART, n + 1))
+        player.add_hand(trump.Trump(trump.Trump.DIAMOND, n + 1))
+        player.add_hand(trump.Trump(trump.Trump.CLUB, n + 1))
+    pair_list = player.get_pair()
+    # 全てチェックするのはナンセンスなのでペアの数だけチェック
+    assert len(pair_list) == (52 / 2)
 
 
 def test_get_hand_size_001():
