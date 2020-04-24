@@ -2,7 +2,6 @@
 """ババ抜きプレイヤークラス"""
 from python_trump import trump_hand
 from python_trump import trump_pair
-from python_trump import trump
 
 
 class OldMaidPlayer:
