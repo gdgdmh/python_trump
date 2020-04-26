@@ -27,6 +27,11 @@ class TrumpHand:
         self.hand.remove(card)
         return card
 
+    def clear(self):
+        """手札を全て削除"""
+        self.hand.clear()
+        pass
+
     def sort(self):
         """手札をソートする"""
         self.hand.sort(key=trump.Trump.get_sort_number)

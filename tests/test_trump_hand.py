@@ -95,6 +95,34 @@ def test_remove_card_003():
     assert t3.get_number() == 4
 
 
+def test_clear_001():
+    """手札を全て削除(1枚)"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.HEART, 4))
+    hand.clear()
+    assert hand.size() == 0
+    assert hand.is_empty()
+
+
+def test_clear_002():
+    """手札を全て削除(0枚)"""
+    hand = trump_hand.TrumpHand()
+    hand.clear()
+    assert hand.size() == 0
+    assert hand.is_empty()
+
+
+def test_clear_003():
+    """手札を全て削除(3枚)"""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.HEART, 4))
+    hand.add(trump.Trump(trump.Trump.SPADE, 10))
+    hand.add(trump.Trump(trump.Trump.JOKER, 2))
+    hand.clear()
+    assert hand.size() == 0
+    assert hand.is_empty()
+
+
 def test_sort_001():
     """3枚のカードをソートする"""
     hand = trump_hand.TrumpHand()
