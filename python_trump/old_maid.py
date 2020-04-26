@@ -2,6 +2,7 @@
 """ババ抜きクラス"""
 from python_trump import old_maid_player
 from python_trump import trump_deck
+from python_trump import turn
 
 
 class OldMaid:
@@ -17,11 +18,11 @@ class OldMaid:
         self.trash_list = []
         # プレイヤー
         if player_count < self.MIN_PLAYER or player_count > self.MAX_PLAYER:
-            raise ValueError("card not trump!")
-
+            raise ValueError("set player_count >= 2 and player_count <= 26")
         self.players = []
         for _ in range(player_count):
             self.players.append(old_maid_player.OldMaidPlayer())
         self.player_count = player_count
         # ターン
+        self.game_turn = turn.Turn(0, player_count)
         # 結果
