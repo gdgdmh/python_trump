@@ -2,7 +2,6 @@
 """ババ抜きプレイヤークラス"""
 from python_trump import trump_hand
 from python_trump import trump_pair
-from python_trump import trump
 
 
 class OldMaidPlayer:
@@ -20,9 +19,18 @@ class OldMaidPlayer:
         """カードを手札から出す(index指定)"""
         return self.hand.remove(index)
 
-    def play_trump(self, card):
+    def play_trump(self, trump):
         """カードを手札からだす(カード指定)"""
-        return self.hand.remove_trump(card)
+        return self.hand.remove_trump(trump)
+
+    def play_pair(self):
+        """ペアカードを出す"""
+        # ペアカードを手札から出す
+        pair_list = self.get_pair()
+        for p in pair_list:
+            self.play_trump(p.get()[0])
+            self.play_trump(p.get()[1])
+        return pair_list
 
     def get_pair(self):
         """ペアのカードを取得する"""
