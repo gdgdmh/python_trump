@@ -3,6 +3,7 @@
 from python_trump import old_maid_player
 from python_trump import trump_deck
 from python_trump import turn
+from python_trump import result
 
 
 class OldMaid:
@@ -26,3 +27,9 @@ class OldMaid:
         # ターン
         self.game_turn = turn.Turn(0, player_count)
         # 結果
+        self.game_result = result.Result()
+
+    def initialize_game(self):
+        """ゲームの初期化"""
+        self.deck.set_one_joker_deck()
+        self.trash_list.clear()
