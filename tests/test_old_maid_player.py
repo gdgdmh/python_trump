@@ -4,6 +4,27 @@ from python_trump import old_maid_player
 from python_trump import trump
 
 
+def test_get_name_001():
+    """名前の取得"""
+    player = old_maid_player.OldMaidPlayer('test')
+    assert player.get_name() == 'test'
+
+
+def test_get_name_002():
+    """名前の取得"""
+    player = old_maid_player.OldMaidPlayer('プレイヤー')
+    assert player.get_name() == 'プレイヤー'
+
+
+def test_initialize_game_001():
+    """ゲーム開始の初期化"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 10))
+    assert player.get_hand_size() == 1
+    player.initialize_game()
+    assert player.get_hand_size() == 0
+
+
 def test_add_hand_001():
     """手札にカードを追加チェック"""
     player = old_maid_player.OldMaidPlayer()

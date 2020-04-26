@@ -6,10 +6,18 @@ from python_trump import trump_pair
 
 class OldMaidPlayer:
 
-    def __init__(self):
+    def __init__(self, player_name='p'):
         """コンストラクタ"""
-        self.name = "p"
+        self.name = player_name
         self.hand = trump_hand.TrumpHand()
+
+    def get_name(self):
+        """名前の取得"""
+        return self.name
+
+    def initialize_game(self):
+        """ゲーム開始のための初期化"""
+        self.hand.clear()
 
     def add_hand(self, card):
         """カードを手札に加える"""
