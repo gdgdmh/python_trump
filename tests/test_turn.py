@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""トランプテストクラス"""
+"""ターンテストクラス"""
 from python_trump import turn
 
 
