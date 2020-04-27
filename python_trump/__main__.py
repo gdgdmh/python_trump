@@ -37,6 +37,7 @@ def main():
     len(pair_list) == 2
     # old_maid
     om = old_maid.OldMaid(4)
+    om.initialize_game()
 
 
 if __name__ == '__main__':

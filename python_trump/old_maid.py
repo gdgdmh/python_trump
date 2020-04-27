@@ -33,3 +33,12 @@ class OldMaid:
         """ゲームの初期化"""
         self.deck.set_one_joker_deck()
         self.trash_list.clear()
+        for p in self.players:
+            p.initialize_game()
+        self.game_turn.set(0)
+        self.game_result.set_ended(False)
+        self.game_result.set_win_player(0)
+
+    def task(self):
+        """ゲーム処理"""
+        pass
