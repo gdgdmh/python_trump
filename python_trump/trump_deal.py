@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 """トランプ配布クラス"""
-from python_trump import old_maid_player
-from python_trump import trump_deck
 
 
 class TrumpDeal:
