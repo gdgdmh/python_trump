@@ -2,6 +2,7 @@
 """ババ抜きクラス"""
 from python_trump import old_maid_player
 from python_trump import trump_deck
+from python_trump import trump_deal
 from python_trump import turn
 from python_trump import scene
 from python_trump import result
@@ -35,6 +36,7 @@ class OldMaid:
     def initialize_game(self):
         """ゲームの初期化"""
         self.deck.set_one_joker_deck()
+        self.deck.shuffle()
         self.trash_list.clear()
         for p in self.players:
             p.initialize_game()
@@ -69,7 +71,9 @@ class OldMaid:
 
     def _task_deal(self):
         """カード配布シーン"""
-        pass
+        deal = trump_deal.TrumpDeal()
+        deal.deal(self.deck, self.players)
+        self.game_scene.set(scene.Scene.SELECT_CARD)
 
     def _task_select_card(self):
         """カード選択シーン"""
