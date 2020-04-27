@@ -3,6 +3,7 @@
 from python_trump import old_maid_player
 from python_trump import trump_deck
 from python_trump import turn
+from python_trump import scene
 from python_trump import result
 
 
@@ -26,6 +27,8 @@ class OldMaid:
         self.player_count = player_count
         # ターン
         self.game_turn = turn.Turn(0, player_count)
+        # シーン
+        self.game_scene = scene.Scene()
         # 結果
         self.game_result = result.Result()
 
@@ -36,9 +39,50 @@ class OldMaid:
         for p in self.players:
             p.initialize_game()
         self.game_turn.set(0)
+        self.game_scene.initialize_game()
         self.game_result.set_ended(False)
         self.game_result.set_win_player(0)
 
     def task(self):
         """ゲーム処理"""
+        s = self.game_scene.get()
+        if s == scene.Scene.INITIALIZE:
+            self._task_initialize()
+        elif s == scene.Scene.DEAL:
+            self._task_deal()
+        elif s == scene.Scene.SELECT_CARD:
+            self._task_select_card()
+        elif s == scene.Scene.PLAY_CARD:
+            self._task_play_card()
+        elif s == scene.Scene.CHANGE_TURN:
+            self._task_change_turn()
+        elif s == scene.Scene.END:
+            self._task_end()
+
+    def get_scene(self):
+        """現在のシーンを取得"""
+        return self.game_scene.get()
+
+    def _task_initialize(self):
+        """初期化シーン"""
+        self.game_scene.set(scene.Scene.DEAL)
+
+    def _task_deal(self):
+        """カード配布シーン"""
+        pass
+
+    def _task_select_card(self):
+        """カード選択シーン"""
+        pass
+
+    def _task_play_card(self):
+        """カード捨てシーン"""
+        pass
+
+    def _task_change_turn(self):
+        """ターン切り替えシーン"""
+        pass
+
+    def _task_end(self):
+        """終了シーン"""
         pass
