@@ -87,6 +87,48 @@ def test_reverse_006():
     assert t.get() == 8
 
 
+def test_set_001():
+    """ターン設定"""
+    t = turn.Turn(0, 4)
+    t.set(0)
+    assert t.get() == 0
+
+
+def test_set_002():
+    """ターン設定"""
+    t = turn.Turn(0, 4)
+    t.set(1)
+    assert t.get() == 1
+
+
+def test_set_003():
+    """ターン設定"""
+    t = turn.Turn(0, 4)
+    t.set(2)
+    assert t.get() == 2
+
+
+def test_set_004():
+    """ターン設定"""
+    t = turn.Turn(0, 4)
+    t.set(3)
+    assert t.get() == 3
+
+
+def test_set_005():
+    """ターン設定"""
+    t = turn.Turn(0, 7)
+    t.set(0)
+    assert t.get() == 0
+
+
+def test_set_006():
+    """ターン設定"""
+    t = turn.Turn(0, 7)
+    t.set(6)
+    assert t.get() == 6
+
+
 def test_get_001():
     """ターン取得"""
     t = turn.Turn(0, 4)

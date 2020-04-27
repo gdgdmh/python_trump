@@ -21,6 +21,10 @@ class Turn:
         if self.turn < 0:
             self.turn = self.max_player - 1
 
+    def set(self, set_turn):
+        """ターンを強制的に設定する"""
+        self.turn = set_turn
+
     def get(self):
         """ターンを取得する"""
         return self.turn
