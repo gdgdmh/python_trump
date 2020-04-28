@@ -52,6 +52,11 @@ def test___ne__002():
     assert card1 != card2
 
 
+def test_print_string_001():
+    """トランプを文字列で表示する(エラーが起きなければ成功とする)."""
+    trump.Trump(trump.Trump.DIAMOND, 1).print_string()
+
+
 def test_get_suit_001():
     """スート取得(JOKER)."""
     assert trump.Trump(trump.Trump.JOKER, 1).get_suit() == trump.Trump.JOKER

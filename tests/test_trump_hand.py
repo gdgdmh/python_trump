@@ -288,3 +288,10 @@ def test_copy_list_002():
     t3 = cards[2]
     assert t3.get_suit() == trump.Trump.JOKER
     assert t3.get_number() == 2
+
+
+def test_print_001():
+    """手札のリストをコピーする(エラーが起きなければ成功とする)."""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.DIAMOND, 1))
+    hand.print()
