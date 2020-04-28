@@ -5,7 +5,7 @@ from python_trump import trump
 
 
 def test_add_001():
-    """トランプを手札に追加チェック."""
+    """トランプを手札に追加."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.JOKER, 1))
     assert hand.size() == 1
@@ -15,7 +15,7 @@ def test_add_001():
 
 
 def test_add_002():
-    """トランプを手札に追加チェック(2枚)."""
+    """トランプを手札に追加(2枚)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.CLUB, 13))
     hand.add(trump.Trump(trump.Trump.DIAMOND, 5))
@@ -29,7 +29,7 @@ def test_add_002():
 
 
 def test_remove_001():
-    """手札からトランプを削除チェック(1枚)."""
+    """手札からトランプを削除(1枚)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.CLUB, 13))
     t = hand.remove(0)
@@ -39,7 +39,7 @@ def test_remove_001():
 
 
 def test_remove_002():
-    """手札からトランプを削除チェック(2枚)."""
+    """手札からトランプを削除(2枚)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.SPADE, 5))
     hand.add(trump.Trump(trump.Trump.JOKER, 1))
@@ -54,7 +54,7 @@ def test_remove_002():
 
 
 def test_remove_card_001():
-    """指定したカードを削除チェック(カードを生成)."""
+    """指定したカードを削除(カードを生成)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.JOKER, 1))
     t = hand.remove_trump(trump.Trump(trump.Trump.JOKER, 1))
@@ -64,7 +64,7 @@ def test_remove_card_001():
 
 
 def test_remove_card_002():
-    """指定したカードを削除チェック(index指定)."""
+    """指定したカードを削除(index指定)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.SPADE, 4))
     t = hand.remove_trump(hand.index(0))
@@ -74,7 +74,7 @@ def test_remove_card_002():
 
 
 def test_remove_card_003():
-    """指定したカードを削除チェック."""
+    """指定したカードを削除."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.SPADE, 4))
     hand.add(trump.Trump(trump.Trump.HEART, 4))

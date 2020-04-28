@@ -5,14 +5,14 @@ from python_trump import trump
 
 
 def test_set_full_deck_001():
-    """54枚のカードが設定されているかチェック."""
+    """54枚のカードを設定."""
     deck = trump_deck.TrumpDeck()
     deck.set_full_deck()
     assert deck.size() == 54
 
 
 def test_set_full_deck_002():
-    """54枚のカードの中身をチェック."""
+    """54枚のカードを設定(中身をチェック)."""
     deck = trump_deck.TrumpDeck()
     deck.set_full_deck()
     size = deck.size()
@@ -46,7 +46,7 @@ def test_set_full_deck_002():
 
 
 def test_set_full_deck_003():
-    """54枚のカードを厳密にチェックする."""
+    """54枚のカードを設定(厳密にチェック)."""
     deck = trump_deck.TrumpDeck()
     deck.set_full_deck()
     size = deck.size()
@@ -83,7 +83,7 @@ def test_set_full_deck_003():
 
 
 def set_one_joker_deck_001():
-    """53枚のカードをチェックする."""
+    """53枚のカードを設定."""
     deck = trump_deck.TrumpDeck()
     deck.set_one_joker_deck()
     size = deck.size()
@@ -120,7 +120,7 @@ def set_one_joker_deck_001():
 
 
 def set_no_joker_deck_001():
-    """52枚のカードをチェックする."""
+    """52枚のカードを設定."""
     deck = trump_deck.TrumpDeck()
     deck.set_no_joker_deck()
     size = deck.size()
@@ -152,7 +152,7 @@ def set_no_joker_deck_001():
 
 
 def test_put_top_001():
-    """トランプをデッキをトップに置いているかチェック."""
+    """トランプをデッキをトップに置く."""
     deck = trump_deck.TrumpDeck()
     deck.put_top(trump.Trump(trump.Trump.JOKER, 1))
     card = deck.index(0)
@@ -163,7 +163,7 @@ def test_put_top_001():
 
 
 def test_put_top_002():
-    """トランプをデッキをトップに置いているかチェック(2枚)."""
+    """トランプをデッキをトップに置く(2枚)."""
     deck = trump_deck.TrumpDeck()
     deck.put_top(trump.Trump(trump.Trump.JOKER, 1))
     deck.put_top(trump.Trump(trump.Trump.CLUB, 10))
@@ -180,7 +180,7 @@ def test_put_top_002():
 
 
 def test_put_top_003():
-    """トランプをデッキをトップに置いているかチェック(3枚)."""
+    """トランプをデッキをトップに置く(3枚)."""
     deck = trump_deck.TrumpDeck()
     deck.put_top(trump.Trump(trump.Trump.SPADE, 13))
     deck.put_top(trump.Trump(trump.Trump.DIAMOND, 5))
@@ -203,7 +203,7 @@ def test_put_top_003():
 
 
 def test_draw_001():
-    """デッキから引くチェック."""
+    """デッキから引く."""
     deck = trump_deck.TrumpDeck()
     deck.put_top(trump.Trump(trump.Trump.HEART, 11))
     card = deck.draw()
@@ -214,7 +214,7 @@ def test_draw_001():
 
 
 def test_draw_002():
-    """デッキから引くチェック(2枚)."""
+    """デッキから引く(2枚)."""
     deck = trump_deck.TrumpDeck()
     deck.put_top(trump.Trump(trump.Trump.HEART, 9))
     deck.put_top(trump.Trump(trump.Trump.JOKER, 2))
@@ -231,7 +231,7 @@ def test_draw_002():
 
 
 def test_index_001():
-    """デッキの参照をチェック."""
+    """デッキの参照."""
     deck = trump_deck.TrumpDeck()
     deck.put_top(trump.Trump(trump.Trump.DIAMOND, 3))
     card = deck.index(0)
@@ -242,27 +242,27 @@ def test_index_001():
 
 
 def test_size_001():
-    """デッキのサイズをチェック(1枚)."""
+    """デッキのサイズ取得(1枚)."""
     deck = trump_deck.TrumpDeck()
     deck.put_top(trump.Trump(trump.Trump.SPADE, 6))
     assert deck.size() == 1
 
 
 def test_size_002():
-    """デッキのサイズをチェック(0枚)."""
+    """デッキのサイズ取得(0枚)."""
     deck = trump_deck.TrumpDeck()
     assert deck.size() == 0
 
 
 def test_size_003():
-    """デッキのサイズをチェック(2枚)."""
+    """デッキのサイズを取得(2枚)."""
     deck = trump_deck.TrumpDeck()
     deck.set_no_joker_deck()
     assert deck.size() == 52
 
 
 def test_shuffle_001():
-    """デッキのシャッフルをチェック."""
+    """デッキのシャッフル."""
     deck = trump_deck.TrumpDeck()
     deck.set_one_joker_deck()
     deck_default = trump_deck.TrumpDeck()
