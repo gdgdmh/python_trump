@@ -354,3 +354,51 @@ def test_get_hand_size_002():
     assert player.get_hand_size() == 2
     player.add_hand(trump.Trump(trump.Trump.SPADE, 3))
     assert player.get_hand_size() == 3
+
+
+def test_get_hand_001():
+    """手札を取得"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
+    h = player.get_hand()
+    assert h[0].get_suit() == trump.Trump.DIAMOND
+    assert h[0].get_number() == 2
+    assert len(h) == 1
+
+
+def test_get_hand_002():
+    """手札を取得"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 5))
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 7))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 4))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 13))
+    h = player.get_hand()
+    assert h[0].get_suit() == trump.Trump.DIAMOND
+    assert h[0].get_number() == 5
+    assert h[1].get_suit() == trump.Trump.DIAMOND
+    assert h[1].get_number() == 7
+    assert h[2].get_suit() == trump.Trump.CLUB
+    assert h[2].get_number() == 4
+    assert h[3].get_suit() == trump.Trump.HEART
+    assert h[3].get_number() == 13
+    assert len(h) == 4
+
+
+def test_get_hand_003():
+    """手札を取得"""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 10))
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 11))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 12))
+    player.add_hand(trump.Trump(trump.Trump.JOKER, 1))
+    h = player.get_hand()
+    assert h[0].get_suit() == trump.Trump.SPADE
+    assert h[0].get_number() == 10
+    assert h[1].get_suit() == trump.Trump.DIAMOND
+    assert h[1].get_number() == 11
+    assert h[2].get_suit() == trump.Trump.CLUB
+    assert h[2].get_number() == 12
+    assert h[3].get_suit() == trump.Trump.JOKER
+    assert h[3].get_number() == 1
+    assert len(h) == 4

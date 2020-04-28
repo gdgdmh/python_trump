@@ -19,6 +19,14 @@ class OldMaidPlayer:
         """ゲーム開始のための初期化"""
         self.hand.clear()
 
+    def event_turn_start(self, trump_list):
+        """手番開始"""
+        pass
+
+    def event_turn_select(self, trump_list):
+        """手番カード選択"""
+        return None
+
     def add_hand(self, card):
         """カードを手札に加える"""
         self.hand.add(card)
@@ -61,6 +69,10 @@ class OldMaidPlayer:
     def get_hand_size(self):
         """手札の枚数を取得する"""
         return self.hand.size()
+
+    def get_hand(self):
+        """手札を取得する"""
+        return self.hand.copy_list()
 
     def _get_pair_hand(self, trump_list):
         """手札からペアとなるものを返す"""
