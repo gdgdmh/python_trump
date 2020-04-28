@@ -9,16 +9,16 @@ class OldMaidPlayer:
 
     def __init__(self, player_name='p'):
         """コンストラクタ."""
-        self.name = player_name
-        self.hand = trump_hand.TrumpHand()
+        self._name = player_name
+        self._hand = trump_hand.TrumpHand()
 
     def get_name(self):
         """名前の取得."""
-        return self.name
+        return self._name
 
     def initialize_game(self):
         """ゲーム開始のための初期化."""
-        self.hand.clear()
+        self._hand.clear()
 
     def event_turn_start(self, trump_list):
         """手番開始."""
@@ -30,15 +30,15 @@ class OldMaidPlayer:
 
     def add_hand(self, card):
         """カードを手札に加える."""
-        self.hand.add(card)
+        self._hand.add(card)
 
     def play_hand(self, index):
         """カードを手札から出す(index指定)."""
-        return self.hand.remove(index)
+        return self._hand.remove(index)
 
     def play_trump(self, trump):
         """カードを手札からだす(カード指定)."""
-        return self.hand.remove_trump(trump)
+        return self._hand.remove_trump(trump)
 
     def play_pair(self):
         """ペアカードを出す."""
@@ -51,9 +51,9 @@ class OldMaidPlayer:
 
     def get_pair(self):
         """ペアのカードを取得する."""
-        if self.hand.size() <= 1:
+        if self._hand.size() <= 1:
             return None
-        trump_list = self.hand.copy_list()
+        trump_list = self._hand.copy_list()
         pair_list = []
         while True:
             pair = self._get_pair_hand(trump_list)
@@ -69,11 +69,11 @@ class OldMaidPlayer:
 
     def get_hand_size(self):
         """手札の枚数を取得する."""
-        return self.hand.size()
+        return self._hand.size()
 
     def get_hand(self):
         """手札を取得する."""
-        return self.hand.copy_list()
+        return self._hand.copy_list()
 
     def _get_pair_hand(self, trump_list):
         """手札からペアとなるものを返す."""

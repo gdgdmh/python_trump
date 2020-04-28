@@ -14,18 +14,18 @@ class Scene:
 
     def __init__(self):
         """コンストラクタ."""
-        self.scene = Scene.INITIALIZE
+        self._scene = Scene.INITIALIZE
 
     def initialize_game(self):
         """ゲームの初期化."""
-        self.scene = Scene.INITIALIZE
+        self._scene = Scene.INITIALIZE
 
     def set(self, set_scene):
         """シーンを設定する."""
         if not set_scene >= Scene.INITIALIZE or not set_scene <= Scene.END:
             raise ValueError("set scene error")
-        self.scene = set_scene
+        self._scene = set_scene
 
     def get(self):
         """ターンを取得する."""
-        return self.scene
+        return self._scene

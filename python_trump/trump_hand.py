@@ -8,54 +8,54 @@ class TrumpHand:
 
     def __init__(self):
         """コンストラクタ."""
-        self.hand = []
+        self._hand = []
 
     def add(self, card):
         """トランプを手札に加える."""
         if str(type(card)) != trump.Trump.TYPE_STRING:
             raise ValueError("card not trump!")
-        self.hand.append(card)
+        self._hand.append(card)
 
     def remove(self, index):
         """手札からトランプを除く(index指定)."""
-        card = self.hand[index]
-        self.hand.remove(card)
+        card = self._hand[index]
+        self._hand.remove(card)
         return card
 
     def remove_trump(self, card):
         """手札からトランプを除く."""
-        self.hand.remove(card)
+        self._hand.remove(card)
         return card
 
     def clear(self):
         """手札を全て削除."""
-        self.hand.clear()
+        self._hand.clear()
         pass
 
     def sort(self):
         """手札をソートする."""
-        self.hand.sort(key=trump.Trump.get_sort_number)
+        self._hand.sort(key=trump.Trump.get_sort_number)
 
     def index(self, index):
         """手札からカードを取得する."""
-        return self.hand[index]
+        return self._hand[index]
 
     def size(self):
         """手札の枚数を取得する."""
-        return len(self.hand)
+        return len(self._hand)
 
     def is_empty(self):
         """手札が空か."""
-        return len(self.hand) == 0
+        return len(self._hand) == 0
 
     def copy_list(self):
         """リストのコピー."""
-        return self.hand.copy()
+        return self._hand.copy()
 
     def print(self):
         """手札の表示."""
         index = 0
-        for card in self.hand:
+        for card in self._hand:
             print("[" + str(index) + "]", end="")
             card.print_string()
             index += 1
