@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""ババ抜きクラス"""
+"""ババ抜きクラス."""
 from python_trump import old_maid_player
 from python_trump import trump_deck
 from python_trump import trump_deal
@@ -9,12 +9,13 @@ from python_trump import result
 
 
 class OldMaid:
+    """ババ抜きクラス."""
 
     MIN_PLAYER = 2
     MAX_PLAYER = 26
 
     def __init__(self, player_count=4):
-        """コンストラクタ"""
+        """コンストラクタ."""
         # トランプデッキ
         self.deck = trump_deck.TrumpDeck()
         # 捨て札(トランプペアリスト)
@@ -34,7 +35,7 @@ class OldMaid:
         self.game_result = result.Result()
 
     def initialize_game(self):
-        """ゲームの初期化"""
+        """ゲームの初期化."""
         self.deck.set_one_joker_deck()
         self.deck.shuffle()
         self.trash_list.clear()
@@ -46,7 +47,7 @@ class OldMaid:
         self.game_result.set_win_player(0)
 
     def task(self):
-        """ゲーム処理"""
+        """ゲーム処理."""
         s = self.game_scene.get()
         if s == scene.Scene.INITIALIZE:
             self._task_initialize()
@@ -62,31 +63,31 @@ class OldMaid:
             self._task_end()
 
     def get_scene(self):
-        """現在のシーンを取得"""
+        """現在のシーンを取得."""
         return self.game_scene.get()
 
     def _task_initialize(self):
-        """初期化シーン"""
+        """初期化シーン."""
         self.game_scene.set(scene.Scene.DEAL)
 
     def _task_deal(self):
-        """カード配布シーン"""
+        """カード配布シーン."""
         deal = trump_deal.TrumpDeal()
         deal.deal(self.deck, self.players)
         self.game_scene.set(scene.Scene.SELECT_CARD)
 
     def _task_select_card(self):
-        """カード選択シーン"""
+        """カード選択シーン."""
         pass
 
     def _task_play_card(self):
-        """カード捨てシーン"""
+        """カード捨てシーン."""
         pass
 
     def _task_change_turn(self):
-        """ターン切り替えシーン"""
+        """ターン切り替えシーン."""
         pass
 
     def _task_end(self):
-        """終了シーン"""
+        """終了シーン."""
         pass

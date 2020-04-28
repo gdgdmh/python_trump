@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""エントリーポイント"""
+"""エントリーポイント."""
 from python_trump import trump
 from python_trump import trump_deck
 from python_trump import trump_hand
@@ -8,6 +8,7 @@ from python_trump import old_maid
 
 
 def main():
+    """エントリーポイント."""
     print('main')
     # test code
     # list = range(1, 15)

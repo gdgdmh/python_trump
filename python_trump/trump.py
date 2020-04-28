@@ -1,9 +1,10 @@
 #!/usr/bin/env python
-"""トランプクラス"""
+"""トランプクラス."""
 
 
 class Trump:
-    """トランプデータクラス"""
+    """トランプデータクラス."""
+
     JOKER = 0x00
     SPADE = 0x02
     HEART = 0x04
@@ -26,7 +27,7 @@ class Trump:
     TYPE_STRING = '<class \'python_trump.trump.Trump\'>'
 
     def __init__(self, suit, number):
-        """コンストラクタ"""
+        """コンストラクタ."""
         self.suit = suit
         self.number = number
         if suit != Trump.JOKER:
@@ -37,57 +38,57 @@ class Trump:
             assert number >= Trump.MIN_NUMBER and number <= Trump.MAX_JOKER
 
     def __eq__(self, other):
-        """比較演算子=="""
+        """比較演算子==."""
         if not isinstance(other, Trump):
             return NotImplemented
         return (self.suit, self.number) == (other.suit, other.number)
 
     def __ne__(self, other):
-        """比較演算子!="""
+        """比較演算子!=."""
         if not isinstance(other, Trump):
             return NotImplemented
         return (self.suit, self.number) != (other.suit, other.number)
 
     def print_string(self):
-        """トランプを文字列で表示する"""
+        """トランプを文字列で表示する."""
         print(self.get_suit_short_string() + str(self.number))
 
     def get_suit(self):
-        """トランプのスートを取得する"""
+        """トランプのスートを取得する."""
         return self.suit
 
     def get_number(self):
-        """トランプの番号を取得する"""
+        """トランプの番号を取得する."""
         return self.number
 
     def is_joker(self):
-        """トランプがジョーカーか"""
+        """トランプがジョーカーか."""
         return self.suit == Trump.JOKER
 
     def is_spade(self):
-        """トランプのスートがスペードか"""
+        """トランプのスートがスペードか."""
         return self.suit == Trump.SPADE
 
     def is_heart(self):
-        """トランプのスートがハートか"""
+        """トランプのスートがハートか."""
         return self.suit == Trump.HEART
 
     def is_diamond(self):
-        """トランプのスートがダイアモンドか"""
+        """トランプのスートがダイアモンドか."""
         return self.suit == Trump.DIAMOND
 
     def is_club(self):
-        """トランプのスートがクラブか"""
+        """トランプのスートがクラブか."""
         return self.suit == Trump.CLUB
 
     def get_suit_string(self):
-        """スートの文字列を取得する"""
+        """スートの文字列を取得する."""
         return Trump.SUIT_STRING[self.suit]
 
     def get_suit_short_string(self):
-        """スートの短縮文字列を取得する"""
+        """スートの短縮文字列を取得する."""
         return Trump.SUIT_SHORT_STRING[self.suit]
 
     def get_sort_number(self):
-        """ソート用の番号を取得する"""
+        """ソート用の番号を取得する."""
         return Trump.SUIT_SORT[self.suit] + self.number

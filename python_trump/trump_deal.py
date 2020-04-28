@@ -1,15 +1,16 @@
 #!/usr/bin/env python
-"""トランプ配布クラス"""
+"""トランプ配布クラス."""
 
 
 class TrumpDeal:
+    """トランプ配布クラス."""
 
     def __init__(self):
-        """コンストラクタ"""
+        """コンストラクタ."""
         pass
 
     def deal(self, deck, old_maid_players):
-        """プレイヤーに対してトランプを配布する"""
+        """プレイヤーに対してトランプを配布する."""
         if deck.size() <= 0:
             return
         if len(old_maid_players) == 0:

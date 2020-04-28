@@ -1,8 +1,9 @@
 #!/usr/bin/env python
-"""シーンクラス"""
+"""シーンクラス."""
 
 
 class Scene:
+    """シーンクラス."""
 
     INITIALIZE = 0
     DEAL = 1
@@ -12,19 +13,19 @@ class Scene:
     END = 5
 
     def __init__(self):
-        """コンストラクタ"""
+        """コンストラクタ."""
         self.scene = Scene.INITIALIZE
 
     def initialize_game(self):
-        """ゲームの初期化"""
+        """ゲームの初期化."""
         self.scene = Scene.INITIALIZE
 
     def set(self, set_scene):
-        """シーンを設定する"""
+        """シーンを設定する."""
         if not set_scene >= Scene.INITIALIZE or not set_scene <= Scene.END:
             raise ValueError("set scene error")
         self.scene = set_scene
 
     def get(self):
-        """ターンを取得する"""
+        """ターンを取得する."""
         return self.scene

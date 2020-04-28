@@ -1,46 +1,47 @@
 #!/usr/bin/env python
-"""ババ抜きプレイヤークラス"""
+"""ババ抜きプレイヤークラス."""
 from python_trump import trump_hand
 from python_trump import trump_pair
 
 
 class OldMaidPlayer:
+    """ババ抜きプレイヤークラス."""
 
     def __init__(self, player_name='p'):
-        """コンストラクタ"""
+        """コンストラクタ."""
         self.name = player_name
         self.hand = trump_hand.TrumpHand()
 
     def get_name(self):
-        """名前の取得"""
+        """名前の取得."""
         return self.name
 
     def initialize_game(self):
-        """ゲーム開始のための初期化"""
+        """ゲーム開始のための初期化."""
         self.hand.clear()
 
     def event_turn_start(self, trump_list):
-        """手番開始"""
+        """手番開始."""
         pass
 
     def event_turn_select(self, trump_list):
-        """手番カード選択"""
+        """手番カード選択."""
         return None
 
     def add_hand(self, card):
-        """カードを手札に加える"""
+        """カードを手札に加える."""
         self.hand.add(card)
 
     def play_hand(self, index):
-        """カードを手札から出す(index指定)"""
+        """カードを手札から出す(index指定)."""
         return self.hand.remove(index)
 
     def play_trump(self, trump):
-        """カードを手札からだす(カード指定)"""
+        """カードを手札からだす(カード指定)."""
         return self.hand.remove_trump(trump)
 
     def play_pair(self):
-        """ペアカードを出す"""
+        """ペアカードを出す."""
         # ペアカードを手札から出す
         pair_list = self.get_pair()
         for p in pair_list:
@@ -49,7 +50,7 @@ class OldMaidPlayer:
         return pair_list
 
     def get_pair(self):
-        """ペアのカードを取得する"""
+        """ペアのカードを取得する."""
         if self.hand.size() <= 1:
             return None
         trump_list = self.hand.copy_list()
@@ -67,15 +68,15 @@ class OldMaidPlayer:
         return pair_list
 
     def get_hand_size(self):
-        """手札の枚数を取得する"""
+        """手札の枚数を取得する."""
         return self.hand.size()
 
     def get_hand(self):
-        """手札を取得する"""
+        """手札を取得する."""
         return self.hand.copy_list()
 
     def _get_pair_hand(self, trump_list):
-        """手札からペアとなるものを返す"""
+        """手札からペアとなるものを返す."""
         size = len(trump_list)
         for i in range(size):
             for j in range(size):

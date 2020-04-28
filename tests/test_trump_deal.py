@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-"""ターンテストクラス"""
+"""ターンテストクラス."""
 from python_trump import trump_deal
 from python_trump import trump_deck
 from python_trump import old_maid_player
 
 
 def test_deal_001():
-    """デッキからカードを配る"""
+    """デッキからカードを配る."""
     deal = trump_deal.TrumpDeal()
     deck = trump_deck.TrumpDeck()
     old_maid_players = []
@@ -20,7 +20,7 @@ def test_deal_001():
 
 
 def test_deal_002():
-    """デッキからカードを配る"""
+    """デッキからカードを配る."""
     deal = trump_deal.TrumpDeal()
     deck = trump_deck.TrumpDeck()
     old_maid_players = []
@@ -36,7 +36,7 @@ def test_deal_002():
 
 
 def test_deal_003():
-    """デッキからカードを配る"""
+    """デッキからカードを配る."""
     deal = trump_deal.TrumpDeal()
     deck = trump_deck.TrumpDeck()
     old_maid_players = []
