@@ -45,6 +45,54 @@ def test_change_006():
     assert t.get() == 0
 
 
+def test_change_007():
+    """ターン切り替え(除外1)."""
+    t = turn.Turn(0, 4)
+    t.exclusion(1)
+    t.change()
+    assert t.get() == 2
+
+
+def test_change_008():
+    """ターン切り替え(除外2)."""
+    t = turn.Turn(1, 4)
+    t.exclusion(2)
+    t.exclusion(3)
+    t.change()
+    assert t.get() == 0
+
+
+def test_change_009():
+    """ターン切り替え(除外3)."""
+    t = turn.Turn(0, 4)
+    t.exclusion(1)
+    t.exclusion(2)
+    t.exclusion(3)
+    t.change()
+    assert t.get() == 0
+
+
+def test_change_010():
+    """ターン切り替え(全て除外)."""
+    t = turn.Turn(1, 4)
+    t.exclusion(0)
+    t.exclusion(1)
+    t.exclusion(2)
+    t.exclusion(3)
+    t.change()
+    assert t.get() == 1
+
+
+def test_change_011():
+    """ターン切り替え(除外されたが影響なし)."""
+    t = turn.Turn(2, 4)
+    t.exclusion(0)
+    t.exclusion(1)
+    t.exclusion(2)
+    t.change()
+    assert t.get() == 3
+
+
 def test_reverse_001():
     """ターン切り替え(逆順デフォルト)."""
     t = turn.Turn(0, 4)
@@ -85,6 +133,54 @@ def test_reverse_006():
     t = turn.Turn(0, 9)
     t.reverse()
     assert t.get() == 8
+
+
+def test_reverse_007():
+    """ターン切り替え(逆順 除外1)."""
+    t = turn.Turn(0, 4)
+    t.exclusion(3)
+    t.reverse()
+    assert t.get() == 2
+
+
+def test_reverse_008():
+    """ターン切り替え(逆順 除外2)."""
+    t = turn.Turn(1, 4)
+    t.exclusion(0)
+    t.exclusion(3)
+    t.reverse()
+    assert t.get() == 2
+
+
+def test_reverse_009():
+    """ターン切り替え(除外3)."""
+    t = turn.Turn(0, 4)
+    t.exclusion(1)
+    t.exclusion(2)
+    t.exclusion(3)
+    t.reverse()
+    assert t.get() == 0
+
+
+def test_reverse_010():
+    """ターン切り替え(逆順 全て除外)."""
+    t = turn.Turn(1, 4)
+    t.exclusion(0)
+    t.exclusion(1)
+    t.exclusion(2)
+    t.exclusion(3)
+    t.reverse()
+    assert t.get() == 1
+
+
+def test_reverse_011():
+    """ターン切り替え(逆順 除外されたが影響なし)."""
+    t = turn.Turn(2, 4)
+    t.exclusion(0)
+    t.exclusion(3)
+    t.exclusion(2)
+    t.reverse()
+    assert t.get() == 1
 
 
 def test_set_001():
@@ -171,3 +267,36 @@ def test_get_before_turn_004():
     """ターン取得."""
     t = turn.Turn(3, 4)
     assert t.get_before_turn() == 2
+
+
+def test_exclusion_001():
+    """除外登録."""
+    t = turn.Turn(0, 4)
+    t.exclusion(0)
+
+
+def test_exclusion_002():
+    """ターン取得."""
+    t = turn.Turn(0, 4)
+    t.exclusion(1)
+
+
+def test_exclusion_003():
+    """ターン取得."""
+    t = turn.Turn(0, 4)
+    t.exclusion(2)
+
+
+def test_exclusion_004():
+    """ターン取得."""
+    t = turn.Turn(0, 4)
+    t.exclusion(3)
+
+
+def test_exclusion_005():
+    """ターン取得."""
+    t = turn.Turn(0, 4)
+    t.exclusion(0)
+    t.exclusion(1)
+    t.exclusion(2)
+    t.exclusion(3)
