@@ -7,10 +7,11 @@ class Scene:
 
     INITIALIZE = 0
     DEAL = 1
-    SELECT_CARD = 2
-    PLAY_CARD = 3
-    CHANGE_TURN = 4
-    END = 5
+    START_SELECT_CARD = 2
+    SELECT_CARD = 3
+    PLAY_CARD = 4
+    CHANGE_TURN = 5
+    END = 6
 
     def __init__(self):
         """コンストラクタ."""

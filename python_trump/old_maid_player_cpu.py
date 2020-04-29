@@ -19,6 +19,6 @@ class OldMaidPlayerCpu(old_maid_player.OldMaidPlayer):
     def event_turn_select(self, trump_list):
         """手番カード選択."""
         size = len(trump_list)
-        assert size == 0
+        assert size > 0
         tindex = self._random.get_range(0, size - 1)
         return tindex
