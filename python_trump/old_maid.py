@@ -53,6 +53,8 @@ class OldMaid:
             self._task_initialize()
         elif s == scene.Scene.DEAL:
             self._task_deal()
+        elif s == scene.Scene.START_SELECT_CARD:
+            self._task_start_select_card()
         elif s == scene.Scene.SELECT_CARD:
             self._task_select_card()
         elif s == scene.Scene.PLAY_CARD:
@@ -75,6 +77,12 @@ class OldMaid:
         deal = trump_deal.TrumpDeal()
         deal.deal(self._deck, self._players)
         self._game_scene.set(scene.Scene.SELECT_CARD)
+
+    def _task_start_select_card(self):
+        """カード選択開始シーン."""
+        # t = self._game_turn.get()
+        # self._players[t].event_turn_start()
+        pass
 
     def _task_select_card(self):
         """カード選択シーン."""
