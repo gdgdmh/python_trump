@@ -32,6 +32,10 @@ class OldMaidPlayer:
         """カードを手札に加える."""
         self._hand.add(card)
 
+    def shuffle_hand(self):
+        """手札をシャッフルする."""
+        self._hand.shuffle()
+
     def play_hand(self, index):
         """カードを手札から出す(index指定)."""
         return self._hand.remove(index)

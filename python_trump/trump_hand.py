@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """トランプ手札クラス."""
+import random
 from python_trump import trump
 
 
@@ -36,6 +37,10 @@ class TrumpHand:
         """手札をソートする."""
         self._hand.sort(key=trump.Trump.get_sort_number)
 
+    def shuffle(self):
+        """手札をシャッフルする."""
+        self._shuffle(self._hand)
+
     def index(self, index):
         """手札からカードを取得する."""
         return self._hand[index]
@@ -59,3 +64,11 @@ class TrumpHand:
             print("[" + str(index) + "]", end="")
             card.print_string()
             index += 1
+
+    def _shuffle(self, trumps):
+        """手札をシャッフルする."""
+        size = len(trumps)
+        for i in range(size, 0, -1):
+            i1 = i - 1
+            i2 = random.randint(0, i - 1)
+            trumps[i1], trumps[i2] = trumps[i2], trumps[i1]

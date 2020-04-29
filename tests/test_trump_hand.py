@@ -207,6 +207,50 @@ def test_sort_004():
     assert t3.get_number() == 2
 
 
+def test_shuffle_001():
+    """手札をシャッフル(連続で同じ並びになっていなかったらOK)."""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.JOKER, 2))
+    hand.add(trump.Trump(trump.Trump.CLUB, 13))
+    hand.add(trump.Trump(trump.Trump.SPADE, 1))
+    cnt = 0
+    for _ in range(10):
+        hand.shuffle()
+        t1 = hand.index(0)
+        t2 = hand.index(1)
+        t3 = hand.index(2)
+        if t1.get_suit() is not trump.Trump.JOKER:
+            break
+        if t2.get_suit() is not trump.Trump.CLUB:
+            break
+        if t3.get_suit() is not trump.Trump.SPADE:
+            break
+        cnt += 1
+    assert cnt < 10
+
+
+def test_shuffle_002():
+    """手札をシャッフル(連続で同じ並びになっていなかったらOK)."""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.HEART, 10))
+    hand.add(trump.Trump(trump.Trump.DIAMOND, 2))
+    hand.add(trump.Trump(trump.Trump.CLUB, 8))
+    cnt = 0
+    for _ in range(10):
+        hand.shuffle()
+        t1 = hand.index(0)
+        t2 = hand.index(1)
+        t3 = hand.index(2)
+        if t1.get_suit() is not trump.Trump.HEART:
+            break
+        if t2.get_suit() is not trump.Trump.DIAMOND:
+            break
+        if t3.get_suit() is not trump.Trump.CLUB:
+            break
+        cnt += 1
+    assert cnt < 10
+
+
 def test_index_001():
     """手札からカードの情報を取得する."""
     hand = trump_hand.TrumpHand()

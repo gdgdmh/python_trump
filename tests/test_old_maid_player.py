@@ -45,6 +45,15 @@ def test_add_hand_002():
     assert player.get_hand_size() == 3
 
 
+def test_shuffle_hand_001():
+    """手札をシャッフルする(チェック手段がないので止まらなければOKとする)."""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.HEART, 12))
+    player.add_hand(trump.Trump(trump.Trump.JOKER, 2))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 6))
+    player.shuffle_hand()
+
+
 def test_play_hand_001():
     """手札からカードを出す."""
     player = old_maid_player.OldMaidPlayer()
