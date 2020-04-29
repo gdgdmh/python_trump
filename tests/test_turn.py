@@ -147,3 +147,27 @@ def test_get_003():
     t = turn.Turn(0, 4)
     t.reverse()
     assert t.get() == 3
+
+
+def test_get_before_turn_001():
+    """ターン取得."""
+    t = turn.Turn(0, 4)
+    assert t.get_before_turn() == 3
+
+
+def test_get_before_turn_002():
+    """ターン取得."""
+    t = turn.Turn(1, 4)
+    assert t.get_before_turn() == 0
+
+
+def test_get_before_turn_003():
+    """ターン取得."""
+    t = turn.Turn(2, 4)
+    assert t.get_before_turn() == 1
+
+
+def test_get_before_turn_004():
+    """ターン取得."""
+    t = turn.Turn(3, 4)
+    assert t.get_before_turn() == 2
