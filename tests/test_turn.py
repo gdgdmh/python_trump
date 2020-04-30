@@ -273,30 +273,79 @@ def test_exclusion_001():
     """除外登録."""
     t = turn.Turn(0, 4)
     t.exclusion(0)
+    assert t.get_exclusion_size() == 1
 
 
 def test_exclusion_002():
-    """ターン取得."""
+    """除外登録."""
     t = turn.Turn(0, 4)
     t.exclusion(1)
+    assert t.get_exclusion_size() == 1
 
 
 def test_exclusion_003():
-    """ターン取得."""
+    """除外登録."""
     t = turn.Turn(0, 4)
     t.exclusion(2)
+    assert t.get_exclusion_size() == 1
 
 
 def test_exclusion_004():
-    """ターン取得."""
+    """除外登録."""
     t = turn.Turn(0, 4)
     t.exclusion(3)
+    assert t.get_exclusion_size() == 1
 
 
 def test_exclusion_005():
-    """ターン取得."""
+    """除外登録."""
     t = turn.Turn(0, 4)
     t.exclusion(0)
     t.exclusion(1)
     t.exclusion(2)
     t.exclusion(3)
+    assert t.get_exclusion_size() == 4
+
+
+def test_reset_exclusion_001():
+    """除外リストをクリア."""
+    t = turn.Turn(0, 4)
+    t.exclusion(0)
+    t.reset_exclusion()
+    assert t.get_exclusion_size() == 0
+
+
+def test_reset_exclusion_002():
+    """除外リストをクリア."""
+    t = turn.Turn(0, 4)
+    t.exclusion(0)
+    t.exclusion(1)
+    t.exclusion(2)
+    t.exclusion(3)
+    t.reset_exclusion()
+    assert t.get_exclusion_size() == 0
+
+
+def test_get_exclusion_size_001():
+    """除外リストのサイズを取得."""
+    t = turn.Turn(0, 4)
+    t.exclusion(0)
+    assert t.get_exclusion_size() == 1
+
+
+def test_get_exclusion_size_002():
+    """除外リストのサイズを取得."""
+    t = turn.Turn(0, 4)
+    t.exclusion(1)
+    t.exclusion(2)
+    assert t.get_exclusion_size() == 2
+
+
+def test_get_exclusion_size_003():
+    """除外リストのサイズを取得."""
+    t = turn.Turn(0, 4)
+    t.exclusion(0)
+    t.exclusion(1)
+    t.exclusion(2)
+    t.exclusion(3)
+    assert t.get_exclusion_size() == 4

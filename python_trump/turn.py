@@ -44,6 +44,10 @@ class Turn:
         """除外リストをクリアする."""
         self._exclusions.clear()
 
+    def get_exclusion_size(self):
+        """除外リストのサイズを取得."""
+        return len(self._exclusions)
+
     def _get_next_turn(self, turn_number):
         """次のターンの人の番号を取得する."""
         if len(self._exclusions) > self._max_player - 1:
