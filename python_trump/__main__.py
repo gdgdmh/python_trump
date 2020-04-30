@@ -43,14 +43,9 @@ def main():
     om.initialize_game()
     # old_maid_game
     og = old_maid_game.OldMaidGame()
-    og.task()
-    og.task()
-    og.task()
-    og.task()
-    og.task()
-    og.task()
-    og.task()
-    og.task()
+    while og.get_scene() is not old_maid_game.OldMaidGame.SCENE_END:
+        og.task()
+    print("old_maid_game end")
 
 
 if __name__ == '__main__':
