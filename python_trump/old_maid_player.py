@@ -48,6 +48,8 @@ class OldMaidPlayer:
         """ペアカードを出す."""
         # ペアカードを手札から出す
         pair_list = self.get_pair()
+        if not pair_list:
+            return []
         for p in pair_list:
             self.play_trump(p.get()[0])
             self.play_trump(p.get()[1])
@@ -78,6 +80,10 @@ class OldMaidPlayer:
     def get_hand(self):
         """手札を取得する."""
         return self._hand.copy_list()
+
+    def print_hand(self):
+        """手札を表示する."""
+        return self._hand.print()
 
     def _get_pair_hand(self, trump_list):
         """手札からペアとなるものを返す."""

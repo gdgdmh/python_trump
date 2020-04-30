@@ -29,3 +29,11 @@ def test_get_scene_001():
     om = old_maid.OldMaid(4)
     om.initialize_game()
     assert om.get_scene() == scene.Scene.INITIALIZE
+
+
+def test_get_players_001():
+    """プレイヤーの取得."""
+    om = old_maid.OldMaid(4)
+    om.initialize_game()
+    ps = om.get_players()
+    assert len(ps) == 4

@@ -411,3 +411,14 @@ def test_get_hand_003():
     assert h[3].get_suit() == trump.Trump.JOKER
     assert h[3].get_number() == 1
     assert len(h) == 4
+
+
+def test_print_hand_001():
+    """手札の表示(実行できればOK)."""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 5))
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 6))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 7))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 8))
+    player.add_hand(trump.Trump(trump.Trump.JOKER, 1))
+    player.print_hand()

@@ -27,39 +27,46 @@ def test_set_002():
 def test_set_003():
     """シーン設定."""
     s = scene.Scene()
+    s.set(scene.Scene.DEAL_PLAY)
+    assert s.get() == scene.Scene.DEAL_PLAY
+
+
+def test_set_004():
+    """シーン設定."""
+    s = scene.Scene()
     s.set(scene.Scene.START_SELECT_CARD)
     assert s.get() == scene.Scene.START_SELECT_CARD
 
 
-def test_set_004():
+def test_set_005():
     """シーン設定."""
     s = scene.Scene()
     s.set(scene.Scene.SELECT_CARD)
     assert s.get() == scene.Scene.SELECT_CARD
 
 
-def test_set_005():
+def test_set_006():
     """シーン設定."""
     s = scene.Scene()
     s.set(scene.Scene.PLAY_CARD)
     assert s.get() == scene.Scene.PLAY_CARD
 
 
-def test_set_006():
+def test_set_007():
     """シーン設定."""
     s = scene.Scene()
     s.set(scene.Scene.CHANGE_TURN)
     assert s.get() == scene.Scene.CHANGE_TURN
 
 
-def test_set_007():
+def test_set_008():
     """シーン設定."""
     s = scene.Scene()
     s.set(scene.Scene.END)
     assert s.get() == scene.Scene.END
 
 
-def test_set_008():
+def test_set_009():
     """シーン設定."""
     s = scene.Scene()
     try:
