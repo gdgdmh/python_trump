@@ -1,42 +1,65 @@
 #!/usr/bin/env python
-"""ババ抜きプレイヤークラス"""
+"""ババ抜きプレイヤークラス."""
 from python_trump import trump_hand
 from python_trump import trump_pair
 
 
 class OldMaidPlayer:
+    """ババ抜きプレイヤークラス."""
 
-    def __init__(self):
-        """コンストラクタ"""
-        self.name = "p"
-        self.hand = trump_hand.TrumpHand()
+    def __init__(self, player_name='p'):
+        """コンストラクタ."""
+        self._name = player_name
+        self._hand = trump_hand.TrumpHand()
+
+    def get_name(self):
+        """名前の取得."""
+        return self._name
+
+    def initialize_game(self):
+        """ゲーム開始のための初期化."""
+        self._hand.clear()
+
+    def event_turn_start(self, trump_list):
+        """手番開始."""
+        pass
+
+    def event_turn_select(self, trump_list):
+        """手番カード選択."""
+        return None
 
     def add_hand(self, card):
-        """カードを手札に加える"""
-        self.hand.add(card)
+        """カードを手札に加える."""
+        self._hand.add(card)
+
+    def shuffle_hand(self):
+        """手札をシャッフルする."""
+        self._hand.shuffle()
 
     def play_hand(self, index):
-        """カードを手札から出す(index指定)"""
-        return self.hand.remove(index)
+        """カードを手札から出す(index指定)."""
+        return self._hand.remove(index)
 
     def play_trump(self, trump):
-        """カードを手札からだす(カード指定)"""
-        return self.hand.remove_trump(trump)
+        """カードを手札からだす(カード指定)."""
+        return self._hand.remove_trump(trump)
 
     def play_pair(self):
-        """ペアカードを出す"""
+        """ペアカードを出す."""
         # ペアカードを手札から出す
         pair_list = self.get_pair()
+        if not pair_list:
+            return []
         for p in pair_list:
             self.play_trump(p.get()[0])
             self.play_trump(p.get()[1])
         return pair_list
 
     def get_pair(self):
-        """ペアのカードを取得する"""
-        if self.hand.size() <= 1:
+        """ペアのカードを取得する."""
+        if self._hand.size() <= 1:
             return None
-        trump_list = self.hand.copy_list()
+        trump_list = self._hand.copy_list()
         pair_list = []
         while True:
             pair = self._get_pair_hand(trump_list)
@@ -51,11 +74,19 @@ class OldMaidPlayer:
         return pair_list
 
     def get_hand_size(self):
-        """手札の枚数を取得する"""
-        return self.hand.size()
+        """手札の枚数を取得する."""
+        return self._hand.size()
+
+    def get_hand(self):
+        """手札を取得する."""
+        return self._hand.copy_list()
+
+    def print_hand(self):
+        """手札を表示する."""
+        return self._hand.print()
 
     def _get_pair_hand(self, trump_list):
-        """手札からペアとなるものを返す"""
+        """手札からペアとなるものを返す."""
         size = len(trump_list)
         for i in range(size):
             for j in range(size):

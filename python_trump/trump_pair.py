@@ -1,20 +1,20 @@
 #!/usr/bin/env python
-"""トランプペアクラス"""
+"""トランプペアクラス."""
 from python_trump import trump
 
 
 class TrumpPair:
-    """トランプペアクラス"""
+    """トランプペアクラス."""
 
     def __init__(self, trump1, trump2):
-        """コンストラクタ"""
+        """コンストラクタ."""
         if str(type(trump1)) != trump.Trump.TYPE_STRING:
             raise ValueError("trump1 not trump!")
         if str(type(trump2)) != trump.Trump.TYPE_STRING:
             raise ValueError("trump2 not trump!")
-        self.pair1 = trump1
-        self.pair2 = trump2
+        self._pair1 = trump1
+        self._pair2 = trump2
 
     def get(self):
-        """トランプのペアを取得"""
-        return (self.pair1, self.pair2)
+        """トランプのペアを取得."""
+        return (self._pair1, self._pair2)

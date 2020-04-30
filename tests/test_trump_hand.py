@@ -1,11 +1,11 @@
 #!/usr/bin/env python
-"""手札テストクラス"""
+"""手札テストクラス."""
 from python_trump import trump_hand
 from python_trump import trump
 
 
 def test_add_001():
-    """トランプを手札に追加チェック"""
+    """トランプを手札に追加."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.JOKER, 1))
     assert hand.size() == 1
@@ -15,7 +15,7 @@ def test_add_001():
 
 
 def test_add_002():
-    """トランプを手札に追加チェック(2枚)"""
+    """トランプを手札に追加(2枚)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.CLUB, 13))
     hand.add(trump.Trump(trump.Trump.DIAMOND, 5))
@@ -29,7 +29,7 @@ def test_add_002():
 
 
 def test_remove_001():
-    """手札からトランプを削除チェック(1枚)"""
+    """手札からトランプを削除(1枚)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.CLUB, 13))
     t = hand.remove(0)
@@ -39,7 +39,7 @@ def test_remove_001():
 
 
 def test_remove_002():
-    """手札からトランプを削除チェック(2枚)"""
+    """手札からトランプを削除(2枚)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.SPADE, 5))
     hand.add(trump.Trump(trump.Trump.JOKER, 1))
@@ -54,7 +54,7 @@ def test_remove_002():
 
 
 def test_remove_card_001():
-    """指定したカードを削除チェック(カードを生成)"""
+    """指定したカードを削除(カードを生成)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.JOKER, 1))
     t = hand.remove_trump(trump.Trump(trump.Trump.JOKER, 1))
@@ -64,7 +64,7 @@ def test_remove_card_001():
 
 
 def test_remove_card_002():
-    """指定したカードを削除チェック(index指定)"""
+    """指定したカードを削除(index指定)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.SPADE, 4))
     t = hand.remove_trump(hand.index(0))
@@ -74,7 +74,7 @@ def test_remove_card_002():
 
 
 def test_remove_card_003():
-    """指定したカードを削除チェック"""
+    """指定したカードを削除."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.SPADE, 4))
     hand.add(trump.Trump(trump.Trump.HEART, 4))
@@ -95,8 +95,36 @@ def test_remove_card_003():
     assert t3.get_number() == 4
 
 
+def test_clear_001():
+    """手札を全て削除(1枚)."""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.HEART, 4))
+    hand.clear()
+    assert hand.size() == 0
+    assert hand.is_empty()
+
+
+def test_clear_002():
+    """手札を全て削除(0枚)."""
+    hand = trump_hand.TrumpHand()
+    hand.clear()
+    assert hand.size() == 0
+    assert hand.is_empty()
+
+
+def test_clear_003():
+    """手札を全て削除(3枚)."""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.HEART, 4))
+    hand.add(trump.Trump(trump.Trump.SPADE, 10))
+    hand.add(trump.Trump(trump.Trump.JOKER, 2))
+    hand.clear()
+    assert hand.size() == 0
+    assert hand.is_empty()
+
+
 def test_sort_001():
-    """3枚のカードをソートする"""
+    """3枚のカードをソートする."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.CLUB, 5))
     hand.add(trump.Trump(trump.Trump.JOKER, 1))
@@ -114,7 +142,7 @@ def test_sort_001():
 
 
 def test_sort_002():
-    """4枚のカードをソートする(同一スート)"""
+    """4枚のカードをソートする(同一スート)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.HEART, 5))
     hand.add(trump.Trump(trump.Trump.HEART, 1))
@@ -136,7 +164,7 @@ def test_sort_002():
 
 
 def test_sort_003():
-    """5枚のカードをソートする(各スート)"""
+    """5枚のカードをソートする(各スート)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.HEART, 1))
     hand.add(trump.Trump(trump.Trump.CLUB, 1))
@@ -162,7 +190,7 @@ def test_sort_003():
 
 
 def test_sort_004():
-    """3枚のカードをソートする(JOKER2枚)"""
+    """3枚のカードをソートする(JOKER2枚)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.JOKER, 2))
     hand.add(trump.Trump(trump.Trump.CLUB, 13))
@@ -179,8 +207,52 @@ def test_sort_004():
     assert t3.get_number() == 2
 
 
+def test_shuffle_001():
+    """手札をシャッフル(連続で同じ並びになっていなかったらOK)."""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.JOKER, 2))
+    hand.add(trump.Trump(trump.Trump.CLUB, 13))
+    hand.add(trump.Trump(trump.Trump.SPADE, 1))
+    cnt = 0
+    for _ in range(10):
+        hand.shuffle()
+        t1 = hand.index(0)
+        t2 = hand.index(1)
+        t3 = hand.index(2)
+        if t1.get_suit() is not trump.Trump.JOKER:
+            break
+        if t2.get_suit() is not trump.Trump.CLUB:
+            break
+        if t3.get_suit() is not trump.Trump.SPADE:
+            break
+        cnt += 1
+    assert cnt < 10
+
+
+def test_shuffle_002():
+    """手札をシャッフル(連続で同じ並びになっていなかったらOK)."""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.HEART, 10))
+    hand.add(trump.Trump(trump.Trump.DIAMOND, 2))
+    hand.add(trump.Trump(trump.Trump.CLUB, 8))
+    cnt = 0
+    for _ in range(10):
+        hand.shuffle()
+        t1 = hand.index(0)
+        t2 = hand.index(1)
+        t3 = hand.index(2)
+        if t1.get_suit() is not trump.Trump.HEART:
+            break
+        if t2.get_suit() is not trump.Trump.DIAMOND:
+            break
+        if t3.get_suit() is not trump.Trump.CLUB:
+            break
+        cnt += 1
+    assert cnt < 10
+
+
 def test_index_001():
-    """手札からカードの情報を取得する"""
+    """手札からカードの情報を取得する."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.JOKER, 2))
     t = hand.index(0)
@@ -189,7 +261,7 @@ def test_index_001():
 
 
 def test_index_002():
-    """手札からカードの情報を取得する(2枚)"""
+    """手札からカードの情報を取得する(2枚)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.CLUB, 11))
     hand.add(trump.Trump(trump.Trump.SPADE, 3))
@@ -202,14 +274,14 @@ def test_index_002():
 
 
 def test_size_001():
-    """手札の枚数を取得する"""
+    """手札の枚数を取得する."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.HEART, 6))
     assert hand.size() == 1
 
 
 def test_size_002():
-    """手札の枚数を取得する"""
+    """手札の枚数を取得する."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.DIAMOND, 13))
     hand.add(trump.Trump(trump.Trump.HEART, 6))
@@ -217,13 +289,13 @@ def test_size_002():
 
 
 def test_is_empty_001():
-    """手札が空かチェック"""
+    """手札が空かチェック."""
     hand = trump_hand.TrumpHand()
     assert hand.is_empty()
 
 
 def test_is_empty_002():
-    """手札が空かチェック(追加して削除)"""
+    """手札が空かチェック(追加して削除)."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.HEART, 2))
     hand.remove(0)
@@ -231,21 +303,21 @@ def test_is_empty_002():
 
 
 def test_copy_list_001():
-    """手札のリストをコピーする"""
+    """手札のリストをコピーする."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.CLUB, 3))
     hand.add(trump.Trump(trump.Trump.SPADE, 10))
-    l = hand.copy_list()
-    t1 = l[0]
+    cl = hand.copy_list()
+    t1 = cl[0]
     assert t1.get_suit() == trump.Trump.CLUB
     assert t1.get_number() == 3
-    t2 = l[1]
+    t2 = cl[1]
     assert t2.get_suit() == trump.Trump.SPADE
     assert t2.get_number() == 10
 
 
 def test_copy_list_002():
-    """手札のリストをコピーする"""
+    """手札のリストをコピーする."""
     hand = trump_hand.TrumpHand()
     hand.add(trump.Trump(trump.Trump.DIAMOND, 1))
     hand.add(trump.Trump(trump.Trump.HEART, 12))
@@ -260,3 +332,10 @@ def test_copy_list_002():
     t3 = cards[2]
     assert t3.get_suit() == trump.Trump.JOKER
     assert t3.get_number() == 2
+
+
+def test_print_001():
+    """手札のリストをコピーする(エラーが起きなければ成功とする)."""
+    hand = trump_hand.TrumpHand()
+    hand.add(trump.Trump(trump.Trump.DIAMOND, 1))
+    hand.print()

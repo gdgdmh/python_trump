@@ -1,11 +1,32 @@
 #!/usr/bin/env python
-"""ババ抜きプレイヤーテストクラス"""
+"""ババ抜きプレイヤーテストクラス."""
 from python_trump import old_maid_player
 from python_trump import trump
 
 
+def test_get_name_001():
+    """名前の取得."""
+    player = old_maid_player.OldMaidPlayer('test')
+    assert player.get_name() == 'test'
+
+
+def test_get_name_002():
+    """名前の取得."""
+    player = old_maid_player.OldMaidPlayer('プレイヤー')
+    assert player.get_name() == 'プレイヤー'
+
+
+def test_initialize_game_001():
+    """ゲーム開始の初期化."""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 10))
+    assert player.get_hand_size() == 1
+    player.initialize_game()
+    assert player.get_hand_size() == 0
+
+
 def test_add_hand_001():
-    """手札にカードを追加チェック"""
+    """手札にカードを追加チェック."""
     player = old_maid_player.OldMaidPlayer()
     assert player.get_hand_size() == 0
     player.add_hand(trump.Trump(trump.Trump.SPADE, 2))
@@ -13,7 +34,7 @@ def test_add_hand_001():
 
 
 def test_add_hand_002():
-    """手札にカードを追加チェック"""
+    """手札にカードを追加チェック."""
     player = old_maid_player.OldMaidPlayer()
     assert player.get_hand_size() == 0
     player.add_hand(trump.Trump(trump.Trump.HEART, 12))
@@ -24,8 +45,17 @@ def test_add_hand_002():
     assert player.get_hand_size() == 3
 
 
+def test_shuffle_hand_001():
+    """手札をシャッフルする(チェック手段がないので止まらなければOKとする)."""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.HEART, 12))
+    player.add_hand(trump.Trump(trump.Trump.JOKER, 2))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 6))
+    player.shuffle_hand()
+
+
 def test_play_hand_001():
-    """手札からカードを出す"""
+    """手札からカードを出す."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.HEART, 2))
     assert player.get_hand_size() == 1
@@ -36,7 +66,7 @@ def test_play_hand_001():
 
 
 def test_play_hand_002():
-    """手札からカードを出す(2枚)"""
+    """手札からカードを出す(2枚)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
     player.add_hand(trump.Trump(trump.Trump.SPADE, 6))
@@ -48,7 +78,7 @@ def test_play_hand_002():
 
 
 def test_play_trump_001():
-    """手札からトランプを出す(1枚)"""
+    """手札からトランプを出す(1枚)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.CLUB, 13))
     t = player.play_trump(trump.Trump(trump.Trump.CLUB, 13))
@@ -58,7 +88,7 @@ def test_play_trump_001():
 
 
 def test_play_trump_002():
-    """手札からトランプを出す(3枚)"""
+    """手札からトランプを出す(3枚)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.SPADE, 2))
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
@@ -69,7 +99,7 @@ def test_play_trump_002():
 
 
 def test_play_trump_003():
-    """手札からトランプを出す"""
+    """手札からトランプを出す."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.HEART, 11))
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 4))
@@ -87,7 +117,7 @@ def test_play_trump_003():
 
 
 def test_play_pair_001():
-    """ペアカードを出す(1組)"""
+    """ペアカードを出す(1組)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.HEART, 2))
     player.add_hand(trump.Trump(trump.Trump.CLUB, 2))
@@ -103,7 +133,7 @@ def test_play_pair_001():
 
 
 def test_play_pair_002():
-    """ペアカードを出す(ペアなし)"""
+    """ペアカードを出す(ペアなし)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.SPADE, 1))
     player.add_hand(trump.Trump(trump.Trump.HEART, 2))
@@ -114,7 +144,7 @@ def test_play_pair_002():
 
 
 def test_play_pair_003():
-    """ペアカードを出す(2ペア同じ数字)"""
+    """ペアカードを出す(2ペア同じ数字)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 13))
     player.add_hand(trump.Trump(trump.Trump.HEART, 13))
@@ -137,7 +167,7 @@ def test_play_pair_003():
 
 
 def test_play_pair_004():
-    """ペアカードを出す(JOKER入りでペアにならない)"""
+    """ペアカードを出す(JOKER入りでペアにならない)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.JOKER, 1))
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
@@ -151,7 +181,7 @@ def test_play_pair_004():
 
 
 def test_play_pair_005():
-    """ペアカードを出す(奇数手札)"""
+    """ペアカードを出す(奇数手札)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
     player.add_hand(trump.Trump(trump.Trump.HEART, 3))
@@ -167,7 +197,7 @@ def test_play_pair_005():
 
 
 def test_play_pair_006():
-    """ペアカードを出す(2ペアで違う数字)"""
+    """ペアカードを出す(2ペアで違う数字)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 5))
     player.add_hand(trump.Trump(trump.Trump.HEART, 10))
@@ -190,7 +220,7 @@ def test_play_pair_006():
 
 
 def test_play_pair_007():
-    """ペアカードを出す(全部のトランプ)"""
+    """ペアカードを出す(全部のトランプ)."""
     player = old_maid_player.OldMaidPlayer()
     for n in range(13):
         player.add_hand(trump.Trump(trump.Trump.SPADE, n + 1))
@@ -204,7 +234,7 @@ def test_play_pair_007():
 
 
 def test_get_pair_001():
-    """ペアの取得"""
+    """ペアの取得."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.SPADE, 2))
     player.add_hand(trump.Trump(trump.Trump.HEART, 2))
@@ -219,7 +249,7 @@ def test_get_pair_001():
 
 
 def test_get_pair_002():
-    """ペアの取得(ペアなし)"""
+    """ペアの取得(ペアなし)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.SPADE, 1))
     player.add_hand(trump.Trump(trump.Trump.HEART, 2))
@@ -229,7 +259,7 @@ def test_get_pair_002():
 
 
 def test_get_pair_003():
-    """ペアの取得(2ペアで同じ数字)"""
+    """ペアの取得(2ペアで同じ数字)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 13))
     player.add_hand(trump.Trump(trump.Trump.HEART, 13))
@@ -251,7 +281,7 @@ def test_get_pair_003():
 
 
 def test_get_pair_004():
-    """ペアの取得(JOKER入りでペアにならない)"""
+    """ペアの取得(JOKER入りでペアにならない)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.JOKER, 1))
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
@@ -264,7 +294,7 @@ def test_get_pair_004():
 
 
 def test_get_pair_005():
-    """ペアの取得(奇数手札)"""
+    """ペアの取得(奇数手札)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
     player.add_hand(trump.Trump(trump.Trump.HEART, 3))
@@ -279,7 +309,7 @@ def test_get_pair_005():
 
 
 def test_get_pair_006():
-    """ペアの取得(2ペアで違う数字)"""
+    """ペアの取得(2ペアで違う数字)."""
     player = old_maid_player.OldMaidPlayer()
     player.add_hand(trump.Trump(trump.Trump.DIAMOND, 5))
     player.add_hand(trump.Trump(trump.Trump.HEART, 10))
@@ -301,7 +331,7 @@ def test_get_pair_006():
 
 
 def test_get_pair_007():
-    """ペアの取得(全部のトランプ)"""
+    """ペアの取得(全部のトランプ)."""
     player = old_maid_player.OldMaidPlayer()
     for n in range(13):
         player.add_hand(trump.Trump(trump.Trump.SPADE, n + 1))
@@ -314,7 +344,7 @@ def test_get_pair_007():
 
 
 def test_get_hand_size_001():
-    """手札の枚数を取得チェック"""
+    """手札の枚数を取得チェック."""
     player = old_maid_player.OldMaidPlayer()
     assert player.get_hand_size() == 0
     player.add_hand(trump.Trump(trump.Trump.JOKER, 2))
@@ -324,7 +354,7 @@ def test_get_hand_size_001():
 
 
 def test_get_hand_size_002():
-    """手札の枚数を取得チェック"""
+    """手札の枚数を取得チェック."""
     player = old_maid_player.OldMaidPlayer()
     assert player.get_hand_size() == 0
     player.add_hand(trump.Trump(trump.Trump.SPADE, 2))
@@ -333,3 +363,62 @@ def test_get_hand_size_002():
     assert player.get_hand_size() == 2
     player.add_hand(trump.Trump(trump.Trump.SPADE, 3))
     assert player.get_hand_size() == 3
+
+
+def test_get_hand_001():
+    """手札を取得."""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 2))
+    h = player.get_hand()
+    assert h[0].get_suit() == trump.Trump.DIAMOND
+    assert h[0].get_number() == 2
+    assert len(h) == 1
+
+
+def test_get_hand_002():
+    """手札を取得."""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 5))
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 7))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 4))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 13))
+    h = player.get_hand()
+    assert h[0].get_suit() == trump.Trump.DIAMOND
+    assert h[0].get_number() == 5
+    assert h[1].get_suit() == trump.Trump.DIAMOND
+    assert h[1].get_number() == 7
+    assert h[2].get_suit() == trump.Trump.CLUB
+    assert h[2].get_number() == 4
+    assert h[3].get_suit() == trump.Trump.HEART
+    assert h[3].get_number() == 13
+    assert len(h) == 4
+
+
+def test_get_hand_003():
+    """手札を取得."""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 10))
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 11))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 12))
+    player.add_hand(trump.Trump(trump.Trump.JOKER, 1))
+    h = player.get_hand()
+    assert h[0].get_suit() == trump.Trump.SPADE
+    assert h[0].get_number() == 10
+    assert h[1].get_suit() == trump.Trump.DIAMOND
+    assert h[1].get_number() == 11
+    assert h[2].get_suit() == trump.Trump.CLUB
+    assert h[2].get_number() == 12
+    assert h[3].get_suit() == trump.Trump.JOKER
+    assert h[3].get_number() == 1
+    assert len(h) == 4
+
+
+def test_print_hand_001():
+    """手札の表示(実行できればOK)."""
+    player = old_maid_player.OldMaidPlayer()
+    player.add_hand(trump.Trump(trump.Trump.SPADE, 5))
+    player.add_hand(trump.Trump(trump.Trump.DIAMOND, 6))
+    player.add_hand(trump.Trump(trump.Trump.CLUB, 7))
+    player.add_hand(trump.Trump(trump.Trump.HEART, 8))
+    player.add_hand(trump.Trump(trump.Trump.JOKER, 1))
+    player.print_hand()
