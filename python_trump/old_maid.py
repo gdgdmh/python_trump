@@ -154,7 +154,13 @@ class OldMaid:
     def _proc_player_done(self, number):
         """プレイヤーが上がったときの処理."""
         assert self._players[number].get_hand_size() == 0
+        if self._game_turn.get_exclusion_size() == 0:
+            # first player done
+            self._game_result.set_win_player(number)
         self._game_turn.exclusion(number)
+        if self._game_turn.get_exclusion_size() == (self._player_count - 1):
+            # last player done
+            self._game_result.set_ended(True)
 
     def _is_player_done(self, number):
         """プレイヤーが上がったか."""
